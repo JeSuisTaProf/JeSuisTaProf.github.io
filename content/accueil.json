@@ -11,11 +11,16 @@
     {
       "nom": "LaboLycée",
       "url": "https://labolycee.org",
-      "description": "Sujets et exercices de physique-chimie corrigés."
+      "description": "Sujets (BAC, concours) et exercices de physique-chimie corrigés."
     },
     {
       "nom": "PhET Colorado",
       "url": "https://phet.colorado.edu/fr/",
+      "description": "Simulations interactives de physique et de chimie."
+    },
+    {
+      "nom": "Ostralo",
+      "url": "https://www.ostralo.net/",
       "description": "Simulations interactives de physique et de chimie."
     }
   ],
