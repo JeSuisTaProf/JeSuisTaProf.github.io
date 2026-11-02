@@ -1,0 +1,23 @@
+{
+  "slogan": "Physique-chimie au lycée : fiches, cartes mentales, QCM corrigés et fiches méthodes",
+  "bienvenue": "Ressources de physique-chimie pour les élèves de Première et de Terminale spécialité, rangées selon les programmes officiels. Un post-it gris signale une ressource bientôt disponible.",
+  "menu": [
+    "premiere",
+    "terminale",
+    "methodes",
+    "python"
+  ],
+  "liens": [
+    {
+      "nom": "LaboLycée",
+      "url": "https://labolycee.org",
+      "description": "Sujets et exercices de physique-chimie corrigés."
+    },
+    {
+      "nom": "PhET Colorado",
+      "url": "https://phet.colorado.edu/fr/",
+      "description": "Simulations interactives de physique et de chimie."
+    }
+  ],
+  "pied": "Programmes de référence : Première, BO spécial n° 1 du 22 janvier 2019 ; Terminale, BO spécial n° 8 du 25 juillet 2019. Les QCM n’enregistrent aucune donnée : le résultat reste sur l’écran de l’élève."
+}

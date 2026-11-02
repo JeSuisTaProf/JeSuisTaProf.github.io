@@ -1,0 +1,38 @@
+{
+  "nom": "Fiches méthodes",
+  "couleur": "vert",
+  "intro": "Logiciels, nomenclature et outils utiles toute l’année, en Première comme en Terminale.",
+  "sections": [
+    {
+      "theme": "Fiches méthodes",
+      "partie": "",
+      "postits": [
+        {
+          "code": "N",
+          "titre": "Nomenclature",
+          "ressources": []
+        },
+        {
+          "code": "R",
+          "titre": "Regressi",
+          "ressources": []
+        },
+        {
+          "code": "A",
+          "titre": "Avimeca",
+          "ressources": []
+        },
+        {
+          "code": "I",
+          "titre": "Incertitudes et chiffres significatifs",
+          "ressources": []
+        },
+        {
+          "code": "P",
+          "titre": "Programmation Python",
+          "ressources": []
+        }
+      ]
+    }
+  ]
+}

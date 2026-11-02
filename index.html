@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JeSuisTaProf – Physique-chimie au lycée : fiches, cartes mentales et QCM (Première et Terminale spécialité)</title>
+<meta name="description" content="JeSuisTaProf : ressources de physique-chimie pour les élèves de Première et Terminale spécialité, organisées selon les programmes officiels. Fiches, cartes mentales, QCM corrigés, fiches méthodes et programmes Python.">
+<link rel="canonical" href="https://jesuistaprof.github.io/">
+<meta name="theme-color" content="#2b6cb0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JeSuisTaProf – Physique-chimie au lycée">
+<meta property="og:description" content="Fiches, cartes mentales, QCM corrigés, fiches méthodes et programmes Python, Première et Terminale spécialité.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#f7fafd; --page2:#eaf2fa; --ink:#1f2a37; --soft:#5b6878; --line:#d3deea; --panel:#ffffff; --on:#ffffff;
+  --c-bleu:#2b6cb0; --c-violet:#6b4bb8; --c-vert:#267a4c; --c-orange:#b45309; --c-rose:#b83a6b; --c-turquoise:#0f766e; --c-accueil:#3d5a80;
+  --acc:var(--c-accueil);
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--page:#131a26;--page2:#18222f;--ink:#e9eef6;--soft:#9fb0c7;--line:#2f3d55;--panel:#1b2538;--on:#0f1724;
+    --c-bleu:#8bb8ec;--c-violet:#b8a3ea;--c-vert:#86d3a6;--c-orange:#f0b27a;--c-rose:#f0a0bf;--c-turquoise:#7fd6cc;--c-accueil:#9db8d9}
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:1rem}
+body{margin:0;color:var(--ink);font:1rem/1.55 var(--body);min-height:100vh;
+  background:radial-gradient(900px 420px at 88% -120px,color-mix(in srgb,var(--acc) 14%,transparent),transparent),linear-gradient(180deg,var(--page2),var(--page) 420px);background-color:var(--page)}
+header,main,footer{max-width:1080px;margin:0 auto;padding-inline:clamp(1rem,5vw,2rem)}
+header{padding-top:2.2rem}
+.top{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.logo{font:700 clamp(2.2rem,7vw,3.4rem)/1.05 var(--head);letter-spacing:-.03em;margin:0;
+  background:linear-gradient(transparent 72%,color-mix(in srgb,var(--acc) 28%,transparent) 72%);padding:0 .1em}
+.logo a{color:inherit;text-decoration:none}
+.ico{display:flex;gap:.7rem;color:var(--acc);opacity:.85}
+.ico svg{width:42px;height:42px}
+.tag{font:600 1.5rem/1.2 var(--hand);color:var(--soft);margin:.6rem 0 0}
+nav{display:flex;gap:.6rem;margin:1.5rem 0 .4rem;flex-wrap:wrap}
+nav a{--c:var(--c-accueil);font:700 1.02rem var(--head);text-decoration:none;color:var(--c);padding:.5rem 1.1rem;border:2px solid var(--c);border-radius:999px;background:var(--panel);transition:background .15s,color .15s}
+nav a[aria-current=page]{background:var(--c);color:var(--on)}
+nav a:hover{background:color-mix(in srgb,var(--c) 14%,var(--panel))}
+nav a[aria-current=page]:hover{background:var(--c)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #2f6fde;outline-offset:3px}
+h2.th{font:700 clamp(1.3rem,3.5vw,1.7rem)/1.2 var(--head);margin:2.8rem 0 .2rem;display:flex;align-items:center;gap:.7rem}
+h2.th::before{content:"";width:.9rem;height:.9rem;background:var(--acc);border-radius:50%;flex:none}
+h3.pt{font:700 1.15rem/1.35 var(--head);color:var(--ink);margin:1.4rem 0 .2rem;max-width:62ch}
+.intro{color:var(--soft);max-width:62ch;margin:.2rem 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.5rem 1.25rem;padding:1rem .25rem .5rem}
+.pi{--r:-.8deg;position:relative;text-align:left;font:inherit;color:#26303b;background:var(--bg,#fdf2b3);border:0;padding:1.5rem 1rem 1rem;min-height:150px;cursor:pointer;
+  display:flex;flex-direction:column;gap:.35rem;transform:rotate(var(--r));box-shadow:0 1px 1px rgba(0,0,0,.12),4px 7px 12px -6px rgba(30,50,80,.35);
+  border-bottom-right-radius:1.2rem .5rem;transition:transform .15s;text-decoration:none}
+.pi::before{content:"";position:absolute;top:-9px;left:50%;width:56px;height:18px;margin-left:-28px;background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.06);transform:rotate(-2deg)}
+.pi:nth-child(4n+2){--r:.7deg}.pi:nth-child(4n+3){--r:-.3deg}.pi:nth-child(4n){--r:1.1deg}
+.pi:hover{transform:rotate(0) translateY(-4px)}
+.pi .code{font:700 2rem/1.05 var(--hand)}
+.pi .code.long{font-size:1.6rem}
+.pi .tx{font-size:.95rem;line-height:1.35;flex:1}
+.pi .st{font:600 1.1rem/1 var(--hand);opacity:.7}
+.pi.vide{--bg:#e4e7ec;color:#5f6874;box-shadow:0 1px 1px rgba(0,0,0,.08),3px 5px 9px -6px rgba(30,50,80,.25)}
+.pi.vide .code{opacity:.65}
+dialog{width:min(900px,96vw);max-height:94vh;border:2px solid var(--acc);border-radius:.6rem;background:var(--panel);color:var(--ink);padding:0;box-shadow:0 18px 40px -12px rgba(20,40,70,.4);overflow:auto}
+dialog::backdrop{background:rgba(20,28,43,.5)}
+.dh{position:sticky;top:0;z-index:2;background:var(--panel);display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 1.4rem .6rem;border-bottom:1px solid var(--line)}
+.dh h2{font:700 1.3rem/1.25 var(--head);margin:0}
+.dh p{margin:.2rem 0 0;color:var(--soft);font-size:.9rem}
+.x{font:700 1.4rem/1 var(--head);background:none;border:2px solid var(--acc);color:var(--acc);width:2.4rem;height:2.4rem;border-radius:50%;cursor:pointer;flex:none}
+.db{padding:1rem 1.4rem 1.4rem}
+.res{display:grid;gap:.8rem}
+.res a,.res button{font:inherit;text-align:left;color:#26303b;background:var(--bg);border:0;padding:.8rem 1rem;text-decoration:none;cursor:pointer;box-shadow:2px 3px 6px -2px rgba(0,0,0,.3);display:flex;gap:.8rem;align-items:baseline}
+.res b{font:700 1.4rem/1 var(--hand);min-width:7.5rem}
+.vide-msg{color:var(--soft);font:600 1.35rem/1.3 var(--hand)}
+.bar{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:.8rem}
+.pdfbox canvas{display:block;width:100%;height:auto;margin:0 0 .8rem;border:1px solid var(--line);background:#fff}
+.view img{max-width:100%;height:auto;display:block;margin:0 auto}
+.view iframe{width:100%;height:min(70vh,640px);border:1px solid var(--line);border-radius:.3rem;background:#fff}
+.view pre{margin:0;padding:1rem;background:color-mix(in srgb,var(--acc) 7%,var(--panel));border:1px solid var(--line);border-radius:.3rem;overflow:auto;font:.88rem/1.5 ui-monospace,Menlo,Consolas,monospace;max-height:60vh}
+.note{color:var(--soft);font-size:.9rem}
+.q{border:0;border-left:4px solid var(--line);margin:1.3rem 0;padding:.2rem 0 .2rem 1rem}
+.q legend{font-weight:600;padding:0;margin-bottom:.5rem;float:left;width:100%}
+.q legend+*{clear:both}
+.q.defi{border-left-color:var(--acc)}
+.q .defi-t{font:700 1.2rem var(--hand);background:var(--acc);color:var(--on);padding:0 .5rem;border-radius:.2rem}
+.q label{display:flex;gap:.6rem;align-items:flex-start;padding:.4rem .6rem;border-radius:.4rem;cursor:pointer;border:1px solid transparent}
+.q label:hover{background:color-mix(in srgb,var(--acc) 10%,transparent)}
+.q label.good{background:#cdeccf;color:#1d3a20;border-color:#6bb36f}
+.q label.bad{background:#f8d2d2;color:#4a1b1b;border-color:#d86a6a}
+.exp{margin:.5rem 0 0;padding:.6rem .8rem;background:color-mix(in srgb,var(--acc) 9%,transparent);border-left:4px solid var(--acc);font-size:.95rem}
+.btn{font:700 1rem var(--head);padding:.6rem 1.2rem;border:2px solid var(--acc);background:var(--acc);color:var(--on);border-radius:999px;cursor:pointer;margin:.3rem .5rem .3rem 0;text-decoration:none;display:inline-block}
+.btn.alt{background:var(--panel);color:var(--acc)}
+.score{display:none;margin:1rem 0;padding:1rem 1.2rem;background:color-mix(in srgb,var(--acc) 16%,var(--panel));border-left:6px solid var(--acc);border-radius:.3rem}
+.score strong{font:700 2.2rem/1 var(--head)}
+.score p{margin:.3rem 0 0;font:700 1.4rem/1.2 var(--hand)}
+.qr{display:none;margin-top:1rem;padding:1rem;border:2px dashed var(--line);text-align:center}
+.qr .qc{display:inline-block;padding:10px;background:#fff}
+footer{padding-block:3rem 2rem;color:var(--soft);font-size:.85rem}
+.err{margin:2rem 0;padding:1rem 1.2rem;border-left:5px solid var(--c-orange);background:var(--panel)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1 class="logo"><a href="#accueil">JeSuisTaProf</a></h1>
+    <div class="ico" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="3" fill="currentColor"/><ellipse cx="24" cy="24" rx="20" ry="8"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(120 24 24)"/></svg>
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6h12M20 6v12L8 39a3 3 0 0 0 2.6 4.5h26.8A3 3 0 0 0 40 39L28 18V6"/><path d="M13.5 31h21"/><circle cx="21" cy="37" r="1.3" fill="currentColor"/><circle cx="27" cy="35" r="1" fill="currentColor"/></svg>
+    </div>
+  </div>
+  <p class="tag" id="tag">Physique-chimie au lycée</p>
+  <nav aria-label="Rubriques" id="nav"></nav>
+</header>
+<main id="main"><p class="intro">Chargement…</p></main>
+<noscript><main><p>JeSuisTaProf regroupe des ressources de physique-chimie (fiches de cours, cartes mentales, QCM corrigés, fiches méthodes, programmes Python) pour les classes de Première et Terminale spécialité, organisées selon les programmes officiels. Ce site nécessite JavaScript.</p></main></noscript>
+<footer id="foot"></footer>
+<dialog id="dlg" aria-labelledby="dt"></dialog>
+
+<script>
+/* =====================================================================
+   JeSuisTaProf – aucun contenu ici : tout se modifie dans /admin
+   Les textes sont lus dans content/*.json ; les fichiers dans media/
+   ===================================================================== */
+const $=s=>document.querySelector(s), dlg=$('#dlg');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fm=s=>esc(s).replace(/_\{([^}]*)\}/g,'<sub>$1</sub>').replace(/\^\{([^}]*)\}/g,'<sup>$1</sup>');
+const plain=s=>String(s??'').replace(/_\{([^}]*)\}/g,'$1').replace(/\^\{([^}]*)\}/g,'$1');
+const slug=s=>plain(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const fileUrl=u=>encodeURI(String(u||'').replace(/^\//,''));
+const httpUrl=u=>/^https?:\/\//i.test(String(u||'').trim())?String(u).trim():'#';
+const ext=u=>(String(u||'').split('?')[0].split('.').pop()||'').toLowerCase();
+const J=u=>fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()});
+const PAL={
+ bleu:['#cfe3f8','#bcd7f3','#d9e9fb','#c6dcf5'], violet:['#ded3f4','#d0c2ef','#e7ddf8','#d9ccf2'],
+ vert:['#cfead8','#bfe3cb','#dbf0e2','#c6e8d2'], orange:['#fbe3c4','#f8d6ab','#fdebd5','#f9dcb7'],
+ rose:['#f9d5e2','#f4c3d6','#fbe1ea','#f6cbdb'], turquoise:['#c9ebe7','#b6e2dd','#d8f1ee','#bfe6e1']
+};
+const TYPES={fiche:'Fiche',carte:'Carte mentale',qcm:'QCM',lien:'Lien',python:'Python'};
+const S={acc:{},rub:{},order:[],cur:null};
+
+/* ---------- chargement ---------- */
+async function init(){
+  try{S.acc=await J('content/accueil.json')}catch(e){S.acc={menu:[],liens:[]}}
+  const res=await Promise.all((S.acc.menu||[]).map(k=>J('content/rubriques/'+k+'.json').then(d=>[k,d]).catch(()=>null)));
+  for(const r of res)if(r){S.rub[r[0]]=r[1];S.order.push(r[0])}
+  $('#tag').textContent=S.acc.slogan||'Physique-chimie au lycée';
+  $('#foot').textContent=S.acc.pied||'';
+  $('#nav').innerHTML=`<a href="#accueil" data-k="accueil">Accueil</a>`+S.order.map(k=>`<a href="#${k}" data-k="${k}" style="--c:var(--c-${S.rub[k].couleur||'bleu'})">${fm(S.rub[k].nom)}</a>`).join('');
+  route();
+}
+
+/* ---------- pages ---------- */
+function page(k){
+  S.cur=k;
+  for(const a of document.querySelectorAll('#nav a')){if(a.dataset.k===k)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}
+  const r=S.rub[k];
+  document.body.style.setProperty('--acc',r?`var(--c-${r.couleur||'bleu'})`:'var(--c-accueil)');
+  if(!r){
+    document.title='JeSuisTaProf – Physique-chimie au lycée : fiches, cartes mentales et QCM';
+    const tiles=S.order.map(x=>{const q=S.rub[x],n=q.sections.reduce((t,s)=>t+s.postits.length,0);
+      return `<a class="pi" href="#${x}" style="--bg:${(PAL[q.couleur]||PAL.bleu)[0]}"><span class="code long">${fm(q.nom)}</span><span class="tx">${fm(q.intro||'')}</span><span class="st">${n} post-it</span></a>`}).join('');
+    const liens=(S.acc.liens||[]).map(l=>`<a class="pi" href="${esc(httpUrl(l.url))}" target="_blank" rel="noopener"><span class="code long">${esc(l.nom)}</span><span class="tx">${esc(l.description||'')}</span><span class="st">ouvrir le site</span></a>`).join('');
+    $('#main').innerHTML=`<section aria-labelledby="hA"><h2 class="th" id="hA">Bienvenue</h2><p class="intro">${esc(S.acc.bienvenue||'')}</p><div class="grid">${tiles}</div></section>`+
+      (liens?`<section aria-labelledby="hL"><h2 class="th" id="hL">Liens utiles</h2><div class="grid">${liens}</div></section>`:'');
+    return;
+  }
+  document.title='JeSuisTaProf – '+plain(r.nom)+' – Physique-chimie';
+  let h=r.intro?`<p class="intro">${fm(r.intro)}</p>`:'',lastTheme=null,ti=-1;
+  (r.sections||[]).forEach((s,i)=>{
+    if(s.theme!==lastTheme){ti++;lastTheme=s.theme;h+=`<h2 class="th">${fm(s.theme)}</h2>`}
+    if(s.partie)h+=`<h3 class="pt">${fm(s.partie)}</h3>`;
+    h+=`<div class="grid">${(s.postits||[]).map((p,j)=>{
+      const n=(p.ressources||[]).length,bg=n?` style="--bg:${(PAL[r.couleur]||PAL.bleu)[ti%4]}"`:'';
+      return `<button class="pi${n?'':' vide'}"${bg} data-open="${k}/${slug((p.code||'')+' '+p.titre)}"><span class="code">${esc(p.code||'')}</span><span class="tx">${fm(p.titre)}</span><span class="st">${n?n+(n>1?' ressources':' ressource'):'bientôt'}</span></button>`}).join('')}</div>`;
+  });
+  $('#main').innerHTML=h||'<p class="intro">Cette rubrique est vide pour le moment.</p>';
+}
+
+/* ---------- fenêtre d'un post-it ---------- */
+function findPostit(k,sl){
+  const r=S.rub[k];if(!r)return null;
+  for(const s of r.sections||[])for(const p of s.postits||[])if(slug((p.code||'')+' '+p.titre)===sl)return {s,p,r};
+  return null;
+}
+function openPostit(k,sl){
+  const f=findPostit(k,sl);if(!f){location.hash=k;return}
+  const {s,p,r}=f,col=PAL[r.couleur]||PAL.bleu,res=p.ressources||[];
+  dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${p.code?esc(p.code)+') ':''}${fm(p.titre)}</h2><p>${fm(s.theme)}${s.partie?' · '+fm(s.partie):''}</p></div><button class="x" aria-label="Fermer" data-close>×</button></div><div class="db" id="body"></div>`;
+  const list=()=>{
+    $('#body').innerHTML=res.length?`<div class="res">${res.map((x,i)=>`<button data-res="${i}" style="--bg:${col[i%4]}"><b>${TYPES[x.type]||'Ressource'}</b><span>${fm(x.titre)}</span></button>`).join('')}</div>
+      <p><button class="btn alt" data-qr="${k}/${sl}">QR code de ce post-it</button></p>${qrBox()}`
+      :`<p class="vide-msg">Les ressources de ce post-it arrivent bientôt.</p>`;
+    if(res.length===1&&!(res[0].type==='lien'&&!res[0].integrer))show(0);
+  };
+  const show=i=>{
+    const x=res[i],b=$('#body');
+    if(x.type==='qcm'){location.hash='qcm-'+x.qcm;return}
+    if(x.type==='lien'&&!x.integrer){window.open(httpUrl(x.url),'_blank','noopener');return}
+    b.innerHTML=`<div class="bar">${res.length>1?`<button class="btn alt" data-back>← Retour</button>`:''}<strong>${fm(x.titre)}</strong></div><div class="view" id="view"><p class="note">Chargement…</p></div>`;
+    viewer(x,$('#view'));
+  };
+  dlg._list=list;dlg._show=show;
+  list();
+  if(!dlg.open)dlg.showModal();
+}
+async function viewer(x,box){
+  try{
+    if(x.type==='lien'){
+      const u=httpUrl(x.url);
+      box.innerHTML=`<iframe src="${esc(u)}" title="${esc(plain(x.titre))}" allow="fullscreen" allowfullscreen referrerpolicy="no-referrer"></iframe><p class="note">Si le contenu ne s’affiche pas, <a href="${esc(u)}" target="_blank" rel="noopener">ouvrez-le dans un nouvel onglet</a>.</p>`;return;
+    }
+    const u=fileUrl(x.fichier),e=ext(x.fichier);
+    if(!x.fichier){box.innerHTML='<p class="note">Aucun fichier n’est rattaché à cette ressource.</p>';return}
+    if(x.type==='python'||e==='py'){
+      const t=await fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.text()});
+      box.innerHTML=`<div class="bar"><a class="btn" href="${u}" download>Télécharger le fichier</a><button class="btn alt" data-copy>Copier le code</button></div><pre><code></code></pre>`;
+      box.querySelector('code').textContent=t;box._code=t;return;
+    }
+    if(e==='pdf'){
+      box.innerHTML=`<div class="bar"><a class="btn alt" href="${u}" target="_blank" rel="noopener">Ouvrir dans un onglet</a></div><div class="pdfbox"></div>`;
+      await pdf(u,box.querySelector('.pdfbox'));return;
+    }
+    if(['png','jpg','jpeg','gif','webp','svg'].includes(e)){box.innerHTML=`<img src="${u}" alt="${esc(plain(x.titre))}">`;return}
+    box.innerHTML=`<p class="note">Ce type de fichier ne peut pas s’afficher dans la page.</p><a class="btn" href="${u}" download>Télécharger le fichier</a>`;
+  }catch(err){box.innerHTML='<p class="note">Impossible d’afficher cette ressource pour le moment.</p>'}
+}
+function loadScript(src){return new Promise((ok,ko)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=ko;document.head.append(s)})}
+async function pdf(u,box){
+  if(!window.pdfjsLib){await loadScript('lib/pdf.min.js');pdfjsLib.GlobalWorkerOptions.workerSrc='lib/pdf.worker.min.js'}
+  const doc=await pdfjsLib.getDocument(u).promise;
+  box.innerHTML='';
+  for(let i=1;i<=doc.numPages;i++){
+    const pg=await doc.getPage(i),w=Math.max(box.clientWidth,300),v0=pg.getViewport({scale:1}),
+      sc=(w/v0.width)*Math.min(window.devicePixelRatio||1,2),v=pg.getViewport({scale:sc}),c=document.createElement('canvas');
+    c.width=v.width;c.height=v.height;box.append(c);
+    await pg.render({canvasContext:c.getContext('2d'),viewport:v}).promise;
+  }
+}
+
+/* ---------- QR code ---------- */
+function qrBox(){return `<div class="qr" id="qr"><div class="qc" id="qc"></div><p><button type="button" class="btn alt" id="qrd">Télécharger l’image</button></p><p class="note">Le QR code pointe vers l’adresse actuelle du site.</p></div>`}
+async function qr(target,name){
+  if(!window.QRCode)await loadScript('lib/qrcode.min.js');
+  const box=$('#qr'),c=$('#qc');box.style.display='block';c.innerHTML='';
+  new QRCode(c,{text:location.origin+location.pathname+'#'+target,width:220,height:220,correctLevel:QRCode.CorrectLevel.M});
+  $('#qrd').onclick=()=>{const cv=c.querySelector('canvas');if(!cv)return;const a=document.createElement('a');a.download='qrcode-'+name+'.png';a.href=cv.toDataURL('image/png');a.click()};
+}
+
+/* ---------- QCM ---------- */
+async function openQcm(id){
+  let q;try{q=await J('content/qcm/'+id+'.json')}catch(e){location.hash=S.cur||'accueil';return}
+  const Q=q.questions||[];
+  dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${fm(q.titre)}</h2><p>${Q.length} questions. Rien n’est enregistré : le résultat reste sur ton écran.</p></div><button class="x" aria-label="Fermer" data-close>×</button></div>
+  <div class="db"><div class="score" id="score" tabindex="-1"></div><form id="f">${Q.map((x,i)=>
+   `<fieldset class="q${x.defi?' defi':''}"><legend>${i+1}. ${x.defi?'<span class="defi-t">Défi</span> ':''}${fm(x.question)}</legend>${(x.choix||[]).map((o,j)=>
+   `<label><input type="radio" name="q${i}" value="${j}"><span>${fm(o)}</span></label>`).join('')}</fieldset>`).join('')}
+   <button type="button" class="btn" id="val">Valider mes réponses</button>
+   <button type="button" class="btn alt" id="again" style="display:none">Recommencer</button>
+   <button type="button" class="btn alt" data-qr="qcm-${id}">QR code de ce QCM</button></form>${qrBox()}</div>`;
+  $('#val').onclick=()=>{
+    let sc=0;
+    Q.forEach((x,i)=>{
+      const fs=document.querySelectorAll('.q')[i],labs=fs.querySelectorAll('label'),ch=fs.querySelector('input:checked'),v=ch?+ch.value:-1,a=(+x.bonne||1)-1;
+      if(v===a)sc++;
+      labs.forEach((l,j)=>{if(j===a)l.classList.add('good');else if(j===v)l.classList.add('bad')});
+      fs.querySelectorAll('input').forEach(e=>e.disabled=true);
+      const p=document.createElement('p');p.className='exp';
+      p.innerHTML=`<strong>${v===a?'Correct.':v<0?'Pas de réponse.':'Incorrect.'}</strong> ${fm(x.explication||'')}`;fs.append(p);
+    });
+    const n=Q.length,m=sc===n?'Parfait, tu maîtrises ce chapitre.':sc>=n*.6?'Bien joué, relis les corrections des erreurs.':'Reprends la fiche du chapitre puis recommence.';
+    const el=$('#score');el.style.display='block';el.innerHTML=`<strong>${sc} / ${n}</strong><p>${m}</p>`;el.focus();
+    $('#val').style.display='none';$('#again').style.display='inline-block';
+  };
+  $('#again').onclick=()=>openQcm(id);
+  if(!dlg.open)dlg.showModal();
+}
+
+/* ---------- navigation ---------- */
+function route(){
+  let h='';try{h=decodeURIComponent(location.hash.slice(1))}catch(e){}
+  if(h.startsWith('qcm-')){if(!S.cur)page('accueil');openQcm(h.slice(4));return}
+  const [k,p]=h.split('/'),key=(k&&S.rub[k])?k:'accueil';
+  if(S.cur!==key)page(key);
+  if(p)openPostit(key,p);else if(dlg.open)dlg.close();
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-open],[data-res],[data-back],[data-close],[data-qr],[data-copy]');if(!t)return;
+  if(t.dataset.open)location.hash=t.dataset.open;
+  else if('res' in t.dataset)dlg._show(+t.dataset.res);
+  else if('back' in t.dataset)dlg._list();
+  else if(t.dataset.qr)qr(t.dataset.qr,slug(t.dataset.qr));
+  else if('copy' in t.dataset){const b=$('#view');navigator.clipboard&&navigator.clipboard.writeText(b._code||'').then(()=>{t.textContent='Copié'})}
+  else dlg.close();
+});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+dlg.addEventListener('close',()=>{if(/^#(qcm-|[^/]+\/)/.test(location.hash))history.replaceState(null,'','#'+(S.cur||'accueil'))});
+addEventListener('hashchange',route);
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+init();
+</script>
+</body>
+</html>

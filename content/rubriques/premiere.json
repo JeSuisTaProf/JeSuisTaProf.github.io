@@ -1,0 +1,135 @@
+{
+  "nom": "Première spécialité",
+  "couleur": "bleu",
+  "intro": "Programme de Première, chapitre par chapitre. Un post-it gris signale une ressource bientôt disponible.",
+  "sections": [
+    {
+      "theme": "Constitution et transformations de la matière",
+      "partie": "1. Suivi de l’évolution d’un système, siège d’une transformation",
+      "postits": [
+        {
+          "code": "A",
+          "titre": "Détermination de la composition du système initial à l’aide de grandeurs physiques",
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "QCM : quantité de matière et concentration",
+              "qcm": "quantite-de-matiere"
+            }
+          ]
+        },
+        {
+          "code": "B",
+          "titre": "Suivi et modélisation de l’évolution d’un système chimique",
+          "ressources": []
+        },
+        {
+          "code": "C",
+          "titre": "Détermination d’une quantité de matière grâce à une transformation chimique",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Constitution et transformations de la matière",
+      "partie": "2. De la structure des entités aux propriétés physiques de la matière",
+      "postits": [
+        {
+          "code": "A",
+          "titre": "De la structure à la polarité d’une entité",
+          "ressources": []
+        },
+        {
+          "code": "B",
+          "titre": "De la structure des entités à la cohésion et à la solubilité/miscibilité d’espèces chimiques",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Constitution et transformations de la matière",
+      "partie": "3. Propriétés physico-chimiques, synthèses et combustions d’espèces chimiques organiques",
+      "postits": [
+        {
+          "code": "A",
+          "titre": "Structure des entités organiques",
+          "ressources": []
+        },
+        {
+          "code": "B",
+          "titre": "Synthèses d’espèces chimiques organiques",
+          "ressources": []
+        },
+        {
+          "code": "C",
+          "titre": "Conversion de l’énergie stockée dans la matière organique",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Mouvement et interactions",
+      "partie": "",
+      "postits": [
+        {
+          "code": "1",
+          "titre": "Interactions fondamentales et introduction à la notion de champ",
+          "ressources": []
+        },
+        {
+          "code": "2",
+          "titre": "Description d’un fluide au repos",
+          "ressources": []
+        },
+        {
+          "code": "3",
+          "titre": "Mouvement d’un système",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "L’énergie : conversions et transferts",
+      "partie": "",
+      "postits": [
+        {
+          "code": "1",
+          "titre": "Aspects énergétiques des phénomènes électriques",
+          "ressources": []
+        },
+        {
+          "code": "2",
+          "titre": "Aspects énergétiques des phénomènes mécaniques",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Ondes et signaux",
+      "partie": "",
+      "postits": [
+        {
+          "code": "1",
+          "titre": "Ondes mécaniques",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Ondes et signaux",
+      "partie": "2. La lumière : images et couleurs, modèles ondulatoire et particulaire",
+      "postits": [
+        {
+          "code": "A",
+          "titre": "Images et couleurs",
+          "ressources": []
+        },
+        {
+          "code": "B",
+          "titre": "Modèles ondulatoire et particulaire de la lumière",
+          "ressources": []
+        }
+      ]
+    }
+  ]
+}

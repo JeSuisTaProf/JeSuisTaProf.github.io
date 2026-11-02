@@ -1,0 +1,171 @@
+# Configuration de l'interface d'administration de JeSuisTaProf (Sveltia CMS)
+backend:
+  name: github
+  repo: JeSuisTaProf/JeSuisTaProf.github.io
+  branch: main
+
+site_url: https://jesuistaprof.github.io
+display_url: https://jesuistaprof.github.io
+media_folder: media
+public_folder: /media
+
+collections:
+  # ---------------------------------------------------------------- ACCUEIL
+  - name: accueil
+    label: Accueil et menu
+    files:
+      - name: accueil
+        label: Page d’accueil
+        file: content/accueil.json
+        format: json
+        fields:
+          - { label: Slogan (sous le titre du site), name: slogan, widget: string }
+          - { label: Texte de bienvenue, name: bienvenue, widget: text }
+          - label: Menu du site (dans l’ordre d’affichage)
+            name: menu
+            widget: list
+            label_singular: rubrique
+            hint: "Pour ajouter une nouvelle page au site : créez-la d’abord dans « Rubriques », puis ajoutez-la ici."
+            field:
+              label: Rubrique
+              name: rubrique
+              widget: relation
+              collection: rubriques
+              search_fields: [nom]
+              value_field: "{{slug}}"
+              display_fields: [nom]
+          - label: Liens utiles
+            name: liens
+            widget: list
+            label_singular: lien
+            required: false
+            summary: "{{fields.nom}}"
+            fields:
+              - { label: Nom, name: nom, widget: string }
+              - { label: "Adresse (https://…)", name: url, widget: string }
+              - { label: Description, name: description, widget: string, required: false }
+          - { label: Texte de bas de page, name: pied, widget: text, required: false }
+
+  # -------------------------------------------------------------- RUBRIQUES
+  - name: rubriques
+    label: Rubriques (pages du site)
+    label_singular: rubrique
+    folder: content/rubriques
+    extension: json
+    format: json
+    create: true
+    delete: false
+    identifier_field: nom
+    slug: "{{slug}}"
+    summary: "{{nom}}"
+    fields:
+      - { label: Nom de la rubrique, name: nom, widget: string }
+      - label: Couleur
+        name: couleur
+        widget: select
+        default: bleu
+        options:
+          - { label: Bleu, value: bleu }
+          - { label: Violet, value: violet }
+          - { label: Vert, value: vert }
+          - { label: Orange, value: orange }
+          - { label: Rose, value: rose }
+          - { label: Turquoise, value: turquoise }
+      - { label: Texte d’introduction, name: intro, widget: text, required: false }
+      - label: Sections
+        name: sections
+        widget: list
+        label_singular: section
+        summary: "{{fields.theme}} {{fields.partie}}"
+        hint: "Une section = un titre de thème (et éventuellement de partie) suivi de ses post-it."
+        fields:
+          - { label: Titre du thème, name: theme, widget: string }
+          - { label: Titre de la partie (facultatif), name: partie, widget: string, required: false }
+          - label: Post-it
+            name: postits
+            widget: list
+            label_singular: post-it
+            summary: "{{fields.code}} {{fields.titre}}"
+            fields:
+              - { label: "Repère (A, B, 1, 2…)", name: code, widget: string, required: false }
+              - { label: Titre du post-it, name: titre, widget: string }
+              - label: Ressources du post-it
+                name: ressources
+                widget: list
+                label_singular: ressource
+                required: false
+                summary: "{{fields.titre}}"
+                hint: "Un post-it sans ressource s’affiche en gris (« bientôt »). Ajoutez une ressource pour le colorer."
+                types:
+                  - label: Fiche de cours (PDF ou image)
+                    name: fiche
+                    widget: object
+                    summary: "Fiche : {{fields.titre}}"
+                    fields:
+                      - { label: Titre, name: titre, widget: string }
+                      - { label: Fichier PDF ou image, name: fichier, widget: file }
+                  - label: Carte mentale (PDF ou image)
+                    name: carte
+                    widget: object
+                    summary: "Carte mentale : {{fields.titre}}"
+                    fields:
+                      - { label: Titre, name: titre, widget: string }
+                      - { label: Fichier PDF ou image, name: fichier, widget: file }
+                  - label: QCM
+                    name: qcm
+                    widget: object
+                    summary: "QCM : {{fields.titre}}"
+                    fields:
+                      - { label: Titre, name: titre, widget: string }
+                      - label: QCM à ouvrir
+                        name: qcm
+                        widget: relation
+                        collection: qcm
+                        search_fields: [titre]
+                        value_field: "{{slug}}"
+                        display_fields: [titre]
+                  - label: Lien internet
+                    name: lien
+                    widget: object
+                    summary: "Lien : {{fields.titre}}"
+                    fields:
+                      - { label: Titre, name: titre, widget: string }
+                      - { label: "Adresse (https://…)", name: url, widget: string }
+                      - { label: "Afficher dans la page (Genially, vidéo, simulation…)", name: integrer, widget: boolean, default: false, required: false }
+                  - label: Programme Python
+                    name: python
+                    widget: object
+                    summary: "Python : {{fields.titre}}"
+                    fields:
+                      - { label: Titre, name: titre, widget: string }
+                      - { label: Fichier .py, name: fichier, widget: file }
+
+  # -------------------------------------------------------------------- QCM
+  - name: qcm
+    label: QCM
+    label_singular: QCM
+    folder: content/qcm
+    extension: json
+    format: json
+    create: true
+    identifier_field: titre
+    slug: "{{slug}}"
+    summary: "{{titre}}"
+    fields:
+      - { label: Titre du QCM, name: titre, widget: string }
+      - label: Questions
+        name: questions
+        widget: list
+        label_singular: question
+        summary: "{{fields.question}}"
+        hint: "Exposants et indices : écrire ^{2} pour une puissance (m^{2}) et _{2} pour un indice (H_{2}O)."
+        fields:
+          - { label: Question, name: question, widget: text }
+          - { label: Question plus difficile (« Défi »), name: defi, widget: boolean, default: false, required: false }
+          - label: Propositions de réponse
+            name: choix
+            widget: list
+            label_singular: proposition
+            field: { label: Proposition, name: choix, widget: string }
+          - { label: Numéro de la bonne proposition (1 = la première), name: bonne, widget: number, value_type: int, min: 1, default: 1 }
+          - { label: Correction détaillée, name: explication, widget: text }

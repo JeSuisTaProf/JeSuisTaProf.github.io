@@ -1,0 +1,84 @@
+{
+  "nom": "Programmes Python",
+  "couleur": "orange",
+  "intro": "Les petits programmes utilisés en classe : télécharge le fichier, puis ouvre-le dans ton éditeur Python habituel.",
+  "sections": [
+    {
+      "theme": "Première spécialité",
+      "partie": "",
+      "postits": [
+        {
+          "code": "py",
+          "titre": "Composition de l’état final d’une transformation totale",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Histogramme d’une série de mesures",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Variation du vecteur vitesse et somme des forces",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Bilan énergétique d’un système en mouvement",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Signal périodique et propagation d’une onde",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Terminale spécialité",
+      "partie": "",
+      "postits": [
+        {
+          "code": "py",
+          "titre": "Quantités de matière en fonction du volume titrant versé",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Évolution d’une concentration et loi de vitesse",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Taux d’avancement final d’un acide sur l’eau",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Diagramme de distribution d’un couple acide-base",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Vecteurs accélération lors d’un mouvement",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Lois de Kepler et données astronomiques",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Somme de deux signaux sinusoïdaux",
+          "ressources": []
+        },
+        {
+          "code": "py",
+          "titre": "Incertitudes-types composées par simulation",
+          "ressources": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "nom": "Terminale spécialité",
+  "couleur": "violet",
+  "intro": "Programme de Terminale, chapitre par chapitre. Un post-it gris signale une ressource bientôt disponible.",
+  "sections": [
+    {
+      "theme": "Constitution et transformations de la matière",
+      "partie": "1. Déterminer la composition d’un système par des méthodes physiques et chimiques",
+      "postits": [
+        {
+          "code": "A",
+          "titre": "Modéliser des transformations acide-base par des transferts d’ion hydrogène H^{+}",
+          "ressources": []
+        },
+        {
+          "code": "B",
+          "titre": "Analyser un système chimique par des méthodes physiques",
+          "ressources": []
+        },
+        {
+          "code": "C",
+          "titre": "Analyser un système par des méthodes chimiques",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Constitution et transformations de la matière",
+      "partie": "2. Modéliser l’évolution temporelle d’un système, siège d’une transformation",
+      "postits": [
+        {
+          "code": "A",
+          "titre": "Suivre et modéliser l’évolution temporelle d’un système siège d’une transformation chimique",
+          "ressources": []
+        },
+        {
+          "code": "B",
+          "titre": "Modéliser l’évolution temporelle d’un système, siège d’une transformation nucléaire",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Constitution et transformations de la matière",
+      "partie": "3. Prévoir l’état final d’un système, siège d’une transformation chimique",
+      "postits": [
+        {
+          "code": "A",
+          "titre": "Prévoir le sens de l’évolution spontanée d’un système chimique",
+          "ressources": []
+        },
+        {
+          "code": "B",
+          "titre": "Comparer la force des acides et des bases",
+          "ressources": []
+        },
+        {
+          "code": "C",
+          "titre": "Forcer le sens d’évolution d’un système",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Constitution et transformations de la matière",
+      "partie": "",
+      "postits": [
+        {
+          "code": "4",
+          "titre": "Élaborer des stratégies en synthèse organique",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Mouvement et interactions",
+      "partie": "",
+      "postits": [
+        {
+          "code": "1",
+          "titre": "Décrire un mouvement",
+          "ressources": []
+        },
+        {
+          "code": "2",
+          "titre": "Relier les actions appliquées à un système à son mouvement",
+          "ressources": []
+        },
+        {
+          "code": "3",
+          "titre": "Modéliser l’écoulement d’un fluide",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "L’énergie : conversions et transferts",
+      "partie": "",
+      "postits": [
+        {
+          "code": "1",
+          "titre": "Décrire un système thermodynamique : exemple du modèle du gaz parfait",
+          "ressources": []
+        },
+        {
+          "code": "2",
+          "titre": "Effectuer des bilans d’énergie sur un système : le premier principe de la thermodynamique",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Ondes et signaux",
+      "partie": "",
+      "postits": [
+        {
+          "code": "1",
+          "titre": "Caractériser les phénomènes ondulatoires",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Ondes et signaux",
+      "partie": "2. Former des images, décrire la lumière par un flux de photons",
+      "postits": [
+        {
+          "code": "A",
+          "titre": "Former des images",
+          "ressources": []
+        },
+        {
+          "code": "B",
+          "titre": "Décrire la lumière par un flux de photons",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "Ondes et signaux",
+      "partie": "",
+      "postits": [
+        {
+          "code": "3",
+          "titre": "Étudier la dynamique d’un système électrique",
+          "ressources": []
+        }
+      ]
+    }
+  ]
+}
