@@ -15,7 +15,13 @@
         {
           "code": "R",
           "titre": "Regressi",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "REGRESSI",
+              "fichier": "/media/0-Fiche_Methode_Regressi.pdf"
+            }
+          ]
         },
         {
           "code": "A",
