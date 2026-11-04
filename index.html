@@ -65,20 +65,31 @@ h3.pt{font:700 1.15rem/1.35 var(--head);color:var(--ink);margin:1.4rem 0 .2rem;m
 .pi .st{font:600 1.1rem/1 var(--hand);opacity:.7}
 .pi.vide{--bg:#e4e7ec;color:#5f6874;box-shadow:0 1px 1px rgba(0,0,0,.08),3px 5px 9px -6px rgba(30,50,80,.25)}
 .pi.vide .code{opacity:.65}
-dialog{width:min(900px,96vw);max-height:94vh;border:2px solid var(--acc);border-radius:.6rem;background:var(--panel);color:var(--ink);padding:0;box-shadow:0 18px 40px -12px rgba(20,40,70,.4);overflow:auto}
+dialog{width:min(900px,96vw);max-height:94vh;border:2px solid var(--acc);border-radius:.6rem;background:var(--panel);color:var(--ink);padding:0;box-shadow:0 18px 40px -12px rgba(20,40,70,.4);overflow:hidden}
+dialog[open]{display:flex;flex-direction:column}
+dialog.wide{width:min(1500px,98vw);height:96vh;max-height:96vh}
 dialog::backdrop{background:rgba(20,28,43,.5)}
-.dh{position:sticky;top:0;z-index:2;background:var(--panel);display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 1.4rem .6rem;border-bottom:1px solid var(--line)}
+.dh{flex:none;background:var(--panel);display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 1.4rem .6rem;border-bottom:1px solid var(--line)}
 .dh h2{font:700 1.3rem/1.25 var(--head);margin:0}
 .dh p{margin:.2rem 0 0;color:var(--soft);font-size:.9rem}
 .x{font:700 1.4rem/1 var(--head);background:none;border:2px solid var(--acc);color:var(--acc);width:2.4rem;height:2.4rem;border-radius:50%;cursor:pointer;flex:none}
-.db{padding:1rem 1.4rem 1.4rem}
+.db{flex:1;min-height:0;overflow:auto;padding:1rem 1.4rem 1.4rem}
+.wide .db{padding:.8rem 1rem 1.2rem}
 .res{display:grid;gap:.8rem}
 .res a,.res button{font:inherit;text-align:left;color:#26303b;background:var(--bg);border:0;padding:.8rem 1rem;text-decoration:none;cursor:pointer;box-shadow:2px 3px 6px -2px rgba(0,0,0,.3);display:flex;gap:.8rem;align-items:baseline}
 .res b{font:700 1.4rem/1 var(--hand);min-width:7.5rem}
 .vide-msg{color:var(--soft);font:600 1.35rem/1.3 var(--hand)}
 .bar{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:.8rem}
-.pdfbox canvas{display:block;width:100%;height:auto;margin:0 0 .8rem;border:1px solid var(--line);background:#fff}
+.bar .btn{margin:0}
+.zm{display:inline-flex;align-items:center;gap:.35rem;margin-left:auto}
+.zm .btn{padding:.35rem .9rem;min-width:2.6rem}
+.zm output{min-width:3.6rem;text-align:center;font:700 .95rem var(--head);color:var(--soft)}
+.pdfbox{overflow-x:auto}
+.pdfpages{margin:0 auto}
+.pdfpg{position:relative;margin:0 0 .8rem;border:1px solid var(--line);background:#fff;box-shadow:0 2px 8px -4px rgba(30,50,80,.35)}
+.pdfpg canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .view img{max-width:100%;height:auto;display:block;margin:0 auto}
+.view img.big{cursor:zoom-in}
 .view iframe{width:100%;height:min(70vh,640px);border:1px solid var(--line);border-radius:.3rem;background:#fff}
 .view pre{margin:0;padding:1rem;background:color-mix(in srgb,var(--acc) 7%,var(--panel));border:1px solid var(--line);border-radius:.3rem;overflow:auto;font:.88rem/1.5 ui-monospace,Menlo,Consolas,monospace;max-height:60vh}
 .note{color:var(--soft);font-size:.9rem}
@@ -101,6 +112,8 @@ dialog::backdrop{background:rgba(20,28,43,.5)}
 .qr .qc{display:inline-block;padding:10px;background:#fff}
 footer{padding-block:3rem 2rem;color:var(--soft);font-size:.85rem}
 .err{margin:2rem 0;padding:1rem 1.2rem;border-left:5px solid var(--c-orange);background:var(--panel)}
+.wide .view iframe{height:calc(96vh - 200px)}
+.wide .view pre{max-height:calc(96vh - 200px)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -134,7 +147,7 @@ const slug=s=>plain(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().rep
 const fileUrl=u=>encodeURI(String(u||'').replace(/^\//,''));
 const httpUrl=u=>/^https?:\/\//i.test(String(u||'').trim())?String(u).trim():'#';
 const ext=u=>(String(u||'').split('?')[0].split('.').pop()||'').toLowerCase();
-const J=u=>fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()});
+const J=u=>fetch(u+'?v='+Math.floor(Date.now()/30000),{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()});
 const PAL={
  bleu:['#cfe3f8','#bcd7f3','#d9e9fb','#c6dcf5'], violet:['#ded3f4','#d0c2ef','#e7ddf8','#d9ccf2'],
  vert:['#cfead8','#bfe3cb','#dbf0e2','#c6e8d2'], orange:['#fbe3c4','#f8d6ab','#fdebd5','#f9dcb7'],
@@ -190,8 +203,10 @@ function findPostit(k,sl){
 function openPostit(k,sl){
   const f=findPostit(k,sl);if(!f){location.hash=k;return}
   const {s,p,r}=f,col=PAL[r.couleur]||PAL.bleu,res=p.ressources||[];
+  dlg.classList.remove('wide');
   dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${p.code?esc(p.code)+') ':''}${fm(p.titre)}</h2><p>${fm(s.theme)}${s.partie?' · '+fm(s.partie):''}</p></div><button class="x" aria-label="Fermer" data-close>×</button></div><div class="db" id="body"></div>`;
   const list=()=>{
+    dlg.classList.remove('wide');dlg._z=null;
     $('#body').innerHTML=res.length?`<div class="res">${res.map((x,i)=>`<button data-res="${i}" style="--bg:${col[i%4]}"><b>${TYPES[x.type]||'Ressource'}</b><span>${fm(x.titre)}</span></button>`).join('')}</div>
       <p><button class="btn alt" data-qr="${k}/${sl}">QR code de ce post-it</button></p>${qrBox()}`
       :`<p class="vide-msg">Les ressources de ce post-it arrivent bientôt.</p>`;
@@ -201,6 +216,7 @@ function openPostit(k,sl){
     const x=res[i],b=$('#body');
     if(x.type==='qcm'){location.hash='qcm-'+x.qcm;return}
     if(x.type==='lien'&&!x.integrer){window.open(httpUrl(x.url),'_blank','noopener');return}
+    dlg.classList.add('wide');
     b.innerHTML=`<div class="bar">${res.length>1?`<button class="btn alt" data-back>← Retour</button>`:''}<strong>${fm(x.titre)}</strong></div><div class="view" id="view"><p class="note">Chargement…</p></div>`;
     viewer(x,$('#view'));
   };
@@ -222,24 +238,47 @@ async function viewer(x,box){
       box.querySelector('code').textContent=t;box._code=t;return;
     }
     if(e==='pdf'){
-      box.innerHTML=`<div class="bar"><a class="btn alt" href="${u}" target="_blank" rel="noopener">Ouvrir dans un onglet</a></div><div class="pdfbox"></div>`;
+      box.innerHTML=`<div class="bar"><a class="btn alt" href="${u}" target="_blank" rel="noopener">Ouvrir dans un onglet</a><span class="zm" role="group" aria-label="Zoom"><button class="btn alt" data-zoom="-" aria-label="Réduire">−</button><output id="zv">100 %</output><button class="btn alt" data-zoom="+" aria-label="Agrandir">+</button><button class="btn alt" data-zoom="0">Ajuster</button></span></div><div class="pdfbox"></div>`;
       await pdf(u,box.querySelector('.pdfbox'));return;
     }
-    if(['png','jpg','jpeg','gif','webp','svg'].includes(e)){box.innerHTML=`<img src="${u}" alt="${esc(plain(x.titre))}">`;return}
+    if(['png','jpg','jpeg','gif','webp','svg'].includes(e)){box.innerHTML=`<a href="${u}" target="_blank" rel="noopener" title="Ouvrir l’image en grand"><img class="big" src="${u}" alt="${esc(plain(x.titre))}"></a><p class="note">Cliquez sur l’image pour l’ouvrir en grand dans un nouvel onglet.</p>`;return}
     box.innerHTML=`<p class="note">Ce type de fichier ne peut pas s’afficher dans la page.</p><a class="btn" href="${u}" download>Télécharger le fichier</a>`;
   }catch(err){box.innerHTML='<p class="note">Impossible d’afficher cette ressource pour le moment.</p>'}
 }
 function loadScript(src){return new Promise((ok,ko)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=ko;document.head.append(s)})}
 async function pdf(u,box){
   if(!window.pdfjsLib){await loadScript('lib/pdf.min.js');pdfjsLib.GlobalWorkerOptions.workerSrc='lib/pdf.worker.min.js'}
-  const doc=await pdfjsLib.getDocument(u).promise;
-  box.innerHTML='';
-  for(let i=1;i<=doc.numPages;i++){
-    const pg=await doc.getPage(i),w=Math.max(box.clientWidth,300),v0=pg.getViewport({scale:1}),
-      sc=(w/v0.width)*Math.min(window.devicePixelRatio||1,2),v=pg.getViewport({scale:sc}),c=document.createElement('canvas');
-    c.width=v.width;c.height=v.height;box.append(c);
-    await pg.render({canvasContext:c.getContext('2d'),viewport:v}).promise;
+  const doc=await pdfjsLib.getDocument(u).promise,pages=document.createElement('div');
+  let z=1,gen=0;pages.className='pdfpages';box.innerHTML='';box.append(pages);
+  const P=[];
+  const sharp=()=>Math.min(Math.max(window.devicePixelRatio||1,2),3);   // définition d'affichage : 2 à 3 fois la taille écran
+  async function draw(p){
+    if(p.busy)return;p.busy=true;const g=gen;
+    try{
+      let w=Math.round(p.wrap.clientWidth*sharp()),h=Math.round(w*p.h/p.w);
+      const k=Math.sqrt(Math.min(1,16e6/(w*h)));w=Math.round(w*k);h=Math.round(h*k);   // plafond mémoire (téléphones)
+      const c=document.createElement('canvas');c.width=w;c.height=h;
+      const vp=p.pg.getViewport({scale:w/p.w});
+      p.task=p.pg.render({canvasContext:c.getContext('2d'),viewport:vp});await p.task.promise;
+      if(g===gen&&p.vis){p.wrap.replaceChildren(c);p.done=true}
+    }catch(err){}finally{p.busy=false}
+    if(p.vis&&!p.done&&p.stale){p.stale=false;draw(p)}
   }
+  const io=new IntersectionObserver(es=>{for(const en of es){
+    const p=en.target._p;p.vis=en.isIntersecting;
+    if(p.vis&&!p.done)draw(p);
+    else if(!p.vis&&p.done){p.wrap.replaceChildren();p.done=false}      // libère la mémoire des pages éloignées
+  }},{root:box.closest('.db'),rootMargin:'900px 0px'});
+  for(let n=1;n<=doc.numPages;n++){
+    const pg=await doc.getPage(n),v=pg.getViewport({scale:1}),wrap=document.createElement('div');
+    wrap.className='pdfpg';wrap.style.aspectRatio=v.width+'/'+v.height;
+    const p={pg,w:v.width,h:v.height,wrap,vis:false,done:false,busy:false};wrap._p=p;P.push(p);pages.append(wrap);io.observe(wrap);
+  }
+  const redraw=()=>{gen++;for(const p of P){if(p.task)try{p.task.cancel()}catch(e){}p.done=false;p.busy=false;p.wrap.replaceChildren();io.unobserve(p.wrap);io.observe(p.wrap)}};
+  const apply=()=>{pages.style.width=(z*100)+'%';const o=$('#zv');if(o)o.textContent=Math.round(z*100)+' %';redraw()};
+  dlg._z=d=>{z=d===0?1:Math.min(3,Math.max(.5,Math.round((z+d)*100)/100));apply()};
+  let t;const onr=()=>{clearTimeout(t);t=setTimeout(()=>{if(!pages.isConnected){removeEventListener('resize',onr);return}redraw()},250)};
+  addEventListener('resize',onr);
 }
 
 /* ---------- QR code ---------- */
@@ -255,6 +294,7 @@ async function qr(target,name){
 async function openQcm(id){
   let q;try{q=await J('content/qcm/'+id+'.json')}catch(e){location.hash=S.cur||'accueil';return}
   const Q=q.questions||[];
+  dlg.classList.remove('wide');
   dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${fm(q.titre)}</h2><p>${Q.length} questions. Rien n’est enregistré : le résultat reste sur ton écran.</p></div><button class="x" aria-label="Fermer" data-close>×</button></div>
   <div class="db"><div class="score" id="score" tabindex="-1"></div><form id="f">${Q.map((x,i)=>
    `<fieldset class="q${x.defi?' defi':''}"><legend>${i+1}. ${x.defi?'<span class="defi-t">Défi</span> ':''}${fm(x.question)}</legend>${(x.choix||[]).map((o,j)=>
@@ -289,16 +329,17 @@ function route(){
   if(p)openPostit(key,p);else if(dlg.open)dlg.close();
 }
 document.addEventListener('click',e=>{
-  const t=e.target.closest('[data-open],[data-res],[data-back],[data-close],[data-qr],[data-copy]');if(!t)return;
+  const t=e.target.closest('[data-open],[data-res],[data-back],[data-close],[data-qr],[data-copy],[data-zoom]');if(!t)return;
   if(t.dataset.open)location.hash=t.dataset.open;
   else if('res' in t.dataset)dlg._show(+t.dataset.res);
   else if('back' in t.dataset)dlg._list();
+  else if('zoom' in t.dataset){if(dlg._z)dlg._z(t.dataset.zoom==='0'?0:t.dataset.zoom==='+'?.25:-.25)}
   else if(t.dataset.qr)qr(t.dataset.qr,slug(t.dataset.qr));
   else if('copy' in t.dataset){const b=$('#view');navigator.clipboard&&navigator.clipboard.writeText(b._code||'').then(()=>{t.textContent='Copié'})}
   else dlg.close();
 });
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
-dlg.addEventListener('close',()=>{if(/^#(qcm-|[^/]+\/)/.test(location.hash))history.replaceState(null,'','#'+(S.cur||'accueil'))});
+dlg.addEventListener('close',()=>{dlg.classList.remove('wide');dlg._z=null;if(/^#(qcm-|[^/]+\/)/.test(location.hash))history.replaceState(null,'','#'+(S.cur||'accueil'))});
 addEventListener('hashchange',route);
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 init();
