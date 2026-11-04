@@ -8,9 +8,15 @@
       "partie": "",
       "postits": [
         {
-          "code": "N",
-          "titre": "Nomenclature",
-          "ressources": []
+          "code": "M",
+          "titre": "Outils calculs en PC & Maths : lettres - Chiffres significatifs - Incertitudes",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Outils Calculs",
+              "fichier": "/media/0-Tablette_Fiches methodes Tle maths.pdf"
+            }
+          ]
         },
         {
           "code": "R",
@@ -25,18 +31,168 @@
         },
         {
           "code": "A",
-          "titre": "Avimeca",
-          "ressources": []
+          "titre": "Audacity : Fiche méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Audacity",
+              "fichier": "/media/0-Fiche_Methode_Audacity.pdf"
+            }
+          ]
         },
         {
-          "code": "I",
-          "titre": "Incertitudes et chiffres significatifs",
-          "ressources": []
+          "code": "E",
+          "titre": "Electricité - Ondes - Oscillo : Fiche Méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Electricite",
+              "fichier": "/media/0-Fiche_Methode_Oscillo_Electricite.pdf"
+            }
+          ]
+        },
+        {
+          "code": "C",
+          "titre": "CCM : Fiche Méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "CCM",
+              "fichier": "/media/0-Chimie_Separation_Identification.pdf"
+            }
+          ]
+        },
+        {
+          "code": "D",
+          "titre": "Dessiner des Molécules : Chemskecth ou kingdraw",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Chemsketch ou Kingdraw",
+              "fichier": "/media/0-Chimie_Dessiner_Molecules.pdf"
+            }
+          ]
+        },
+        {
+          "code": "D",
+          "titre": "Dilution : Fiche Méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Dilution",
+              "fichier": "/media/0-Chimie_Dilution.pdf"
+            }
+          ]
+        },
+        {
+          "code": "D",
+          "titre": "Dissolution : Fiche Méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Dissolution",
+              "fichier": "/media/0-Chimie_Dissolution.pdf"
+            }
+          ]
+        },
+        {
+          "code": "E",
+          "titre": "Extraction Liquide - Liquide : Fiche Méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Extraction",
+              "fichier": "/media/0-Chimie_Extraction_L_L.pdf"
+            }
+          ]
+        },
+        {
+          "code": "F",
+          "titre": "Filtration : Fiche Méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Filtration",
+              "fichier": "/media/0-Chimie_Filtration.pdf"
+            }
+          ]
+        },
+        {
+          "code": "M",
+          "titre": "Masse Volumique : Fiche méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "MV",
+              "fichier": "/media/0-Chimie_Masse_volumique.pdf"
+            }
+          ]
+        },
+        {
+          "code": "N",
+          "titre": "Nomenclature et CHO au Lycée : Fiche méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "CHO",
+              "fichier": "/media/0-Chimie_Nomenclature iupac.pdf"
+            }
+          ]
         },
         {
           "code": "P",
-          "titre": "Programmation Python",
-          "ressources": []
+          "titre": "Pictogrammes de Sécurité en Chimie",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Securite",
+              "fichier": "/media/0-Chimie_Pictogrammes.pdf"
+            }
+          ]
+        },
+        {
+          "code": "V",
+          "titre": "Verrerie et Matériel courant au lycée",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Labo",
+              "fichier": "/media/0-Chimie_Verrerie_materiel.pdf"
+            }
+          ]
+        },
+        {
+          "code": "V",
+          "titre": "Traitement Vidéo : Aviméca ou Régressi",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Video",
+              "fichier": "/media/0-Fiche_Methode_Video.pdf"
+            }
+          ]
+        },
+        {
+          "code": "S",
+          "titre": "Spectrophotomètre : Fiche Méthode",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Spectro",
+              "fichier": "/media/0-Fiche_Methode_Spectrophotometre.pdf"
+            }
+          ]
+        },
+        {
+          "code": "I",
+          "titre": "Images : Fiche méthode Mesurim2 ou SalsaJ",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Image",
+              "fichier": "/media/0-Fiche_Methode_Traitement image.pdf"
+            }
+          ]
         }
       ]
     }
