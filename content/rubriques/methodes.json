@@ -9,7 +9,7 @@
       "postits": [
         {
           "code": "1-",
-          "titre": "CCM : Fiche Méthode",
+          "titre": "CCM",
           "ressources": [
             {
               "type": "fiche",
@@ -31,7 +31,7 @@
         },
         {
           "code": "3-",
-          "titre": "Dilution : Fiche Méthode",
+          "titre": "Dilution",
           "ressources": [
             {
               "type": "fiche",
@@ -42,7 +42,7 @@
         },
         {
           "code": "4-",
-          "titre": "Dissolution : Fiche Méthode",
+          "titre": "Dissolution",
           "ressources": [
             {
               "type": "fiche",
@@ -53,7 +53,7 @@
         },
         {
           "code": "5-",
-          "titre": "Extraction Liquide - Liquide : Fiche Méthode",
+          "titre": "Extraction Liquide - Liquide",
           "ressources": [
             {
               "type": "fiche",
@@ -64,7 +64,7 @@
         },
         {
           "code": "6-",
-          "titre": "Filtration : Fiche Méthode",
+          "titre": "Filtration",
           "ressources": [
             {
               "type": "fiche",
@@ -75,7 +75,7 @@
         },
         {
           "code": "7-",
-          "titre": "Masse Volumique : Fiche méthode",
+          "titre": "Masse Volumique",
           "ressources": [
             {
               "type": "fiche",
@@ -86,7 +86,7 @@
         },
         {
           "code": "8-",
-          "titre": "Nomenclature et CHO au Lycée : Fiche méthode",
+          "titre": "Nomenclature et CHO au Lycée",
           "ressources": [
             {
               "type": "fiche",
@@ -125,7 +125,7 @@
       "postits": [
         {
           "code": "1-",
-          "titre": "Regressi : fiche méthode",
+          "titre": "Regressi",
           "ressources": [
             {
               "type": "fiche",
@@ -208,7 +208,7 @@
       "postits": [
         {
           "code": "1-",
-          "titre": "Audacity : fiche méthode simplifiée",
+          "titre": "Audacity",
           "ressources": [
             {
               "type": "fiche",
@@ -263,5 +263,6 @@
         }
       ]
     }
-  ]
+  ],
+  "compteur": false
 }

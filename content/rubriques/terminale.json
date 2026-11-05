@@ -4,145 +4,133 @@
   "intro": "Programme de Terminale, chapitre par chapitre. Un post-it gris signale une ressource bientôt disponible.",
   "sections": [
     {
-      "theme": "Constitution et transformations de la matière",
-      "partie": "1. Déterminer la composition d’un système par des méthodes physiques et chimiques",
+      "theme": "1. Constitution et transformations de la matière",
+      "partie": "Composition et évolution d’un système",
       "postits": [
         {
-          "code": "A",
-          "titre": "Modéliser des transformations acide-base par des transferts d’ion hydrogène H^{+}",
+          "code": "1",
+          "titre": "Modélisation des transformations acide-base",
           "ressources": []
         },
         {
-          "code": "B",
-          "titre": "Analyser un système chimique par des méthodes physiques",
+          "code": "2",
+          "titre": "Analyse physique d’un système chimique",
           "ressources": []
         },
         {
-          "code": "C",
-          "titre": "Analyser un système par des méthodes chimiques",
-          "ressources": []
-        }
-      ]
-    },
-    {
-      "theme": "Constitution et transformations de la matière",
-      "partie": "2. Modéliser l’évolution temporelle d’un système, siège d’une transformation",
-      "postits": [
-        {
-          "code": "A",
-          "titre": "Suivre et modéliser l’évolution temporelle d’un système siège d’une transformation chimique",
+          "code": "3",
+          "titre": "Méthodes de suivi d’un titrage",
           "ressources": []
         },
-        {
-          "code": "B",
-          "titre": "Modéliser l’évolution temporelle d’un système, siège d’une transformation nucléaire",
-          "ressources": []
-        }
-      ]
-    },
-    {
-      "theme": "Constitution et transformations de la matière",
-      "partie": "3. Prévoir l’état final d’un système, siège d’une transformation chimique",
-      "postits": [
-        {
-          "code": "A",
-          "titre": "Prévoir le sens de l’évolution spontanée d’un système chimique",
-          "ressources": []
-        },
-        {
-          "code": "B",
-          "titre": "Comparer la force des acides et des bases",
-          "ressources": []
-        },
-        {
-          "code": "C",
-          "titre": "Forcer le sens d’évolution d’un système",
-          "ressources": []
-        }
-      ]
-    },
-    {
-      "theme": "Constitution et transformations de la matière",
-      "partie": "",
-      "postits": [
         {
           "code": "4",
-          "titre": "Élaborer des stratégies en synthèse organique",
-          "ressources": []
-        }
-      ]
-    },
-    {
-      "theme": "Mouvement et interactions",
-      "partie": "",
-      "postits": [
-        {
-          "code": "1",
-          "titre": "Décrire un mouvement",
+          "titre": "Évolution temporelle d’une transformation chimique",
           "ressources": []
         },
         {
-          "code": "2",
-          "titre": "Relier les actions appliquées à un système à son mouvement",
+          "code": "5",
+          "titre": "Évolution temporelle d’une transformation nucléaire",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "1. Constitution et transformations de la matière",
+      "partie": "Prévision et stratégie en chimie",
+      "postits": [
+        {
+          "code": "6",
+          "titre": "Évolution spontanée d’un système chimique",
           "ressources": []
         },
         {
-          "code": "3",
-          "titre": "Modéliser l’écoulement d’un fluide",
-          "ressources": []
-        }
-      ]
-    },
-    {
-      "theme": "L’énergie : conversions et transferts",
-      "partie": "",
-      "postits": [
-        {
-          "code": "1",
-          "titre": "Décrire un système thermodynamique : exemple du modèle du gaz parfait",
+          "code": "7",
+          "titre": "Équilibres acide-base",
           "ressources": []
         },
         {
-          "code": "2",
-          "titre": "Effectuer des bilans d’énergie sur un système : le premier principe de la thermodynamique",
-          "ressources": []
-        }
-      ]
-    },
-    {
-      "theme": "Ondes et signaux",
-      "partie": "",
-      "postits": [
-        {
-          "code": "1",
-          "titre": "Caractériser les phénomènes ondulatoires",
-          "ressources": []
-        }
-      ]
-    },
-    {
-      "theme": "Ondes et signaux",
-      "partie": "2. Former des images, décrire la lumière par un flux de photons",
-      "postits": [
-        {
-          "code": "A",
-          "titre": "Former des images",
+          "code": "8",
+          "titre": "Transformations chimiques forcées",
           "ressources": []
         },
         {
-          "code": "B",
-          "titre": "Décrire la lumière par un flux de photons",
+          "code": "9",
+          "titre": "Structure et optimisation en chimie organique",
+          "ressources": []
+        },
+        {
+          "code": "10",
+          "titre": "Stratégies de synthèse",
           "ressources": []
         }
       ]
     },
     {
-      "theme": "Ondes et signaux",
-      "partie": "",
+      "theme": "2. Mouvement et interactions",
       "postits": [
         {
-          "code": "3",
-          "titre": "Étudier la dynamique d’un système électrique",
+          "code": "11",
+          "titre": "Description d’un mouvement",
+          "ressources": []
+        },
+        {
+          "code": "12",
+          "titre": "Mouvement dans un champ uniforme",
+          "ressources": []
+        },
+        {
+          "code": "13",
+          "titre": "Mouvement dans un champ de gravitation",
+          "ressources": []
+        },
+        {
+          "code": "14",
+          "titre": "Modélisation de l’écoulement d’un fluide",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "3. Conversions et transferts d’énergie",
+      "postits": [
+        {
+          "code": "15",
+          "titre": "Étude d’un système thermodynamique",
+          "ressources": []
+        },
+        {
+          "code": "16",
+          "titre": "Bilans d’énergie thermique",
+          "ressources": []
+        }
+      ]
+    },
+    {
+      "theme": "4. Ondes et signaux",
+      "postits": [
+        {
+          "code": "17",
+          "titre": "Propagation des ondes",
+          "ressources": []
+        },
+        {
+          "code": "18",
+          "titre": "Interférences et diffraction",
+          "ressources": []
+        },
+        {
+          "code": "19",
+          "titre": "Lunette astronomique",
+          "ressources": []
+        },
+        {
+          "code": "20",
+          "titre": "Effet photoélectrique et enjeux énergétiques",
+          "ressources": []
+        },
+        {
+          "code": "21",
+          "titre": "Évolutions temporelles dans un circuit capacitif",
           "ressources": []
         }
       ]
