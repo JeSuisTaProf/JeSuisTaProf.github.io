@@ -11,8 +11,9 @@
 <meta property="og:title" content="JeSuisTaProf – Physique-chimie au lycée">
 <meta property="og:description" content="Fiches, cartes mentales, QCM corrigés, fiches méthodes et programmes Python, Première et Terminale spécialité.">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
@@ -96,7 +97,16 @@ dialog::backdrop{background:rgba(20,28,43,.5)}
 .q{border:0;border-left:4px solid var(--line);margin:1.3rem 0;padding:.2rem 0 .2rem 1rem}
 .q legend{font-weight:600;padding:0;margin-bottom:.5rem;float:left;width:100%}
 .q legend+*{clear:both}
+.opts{clear:both}
+.vec{display:inline-block;position:relative;padding-top:.28em;line-height:1}
+.vec::before{content:'';position:absolute;left:.06em;right:.02em;top:.08em;height:.08em;background:currentColor;border-radius:.04em}
+.vec::after{content:'';position:absolute;right:-.02em;top:-.05em;border:.17em solid transparent;border-left:.3em solid currentColor;border-right:0}
 .q.defi{border-left-color:var(--acc)}
+.enonce{margin:1.6rem 0 .4rem;padding:.8rem 1rem;background:color-mix(in srgb,var(--acc) 8%,var(--panel));border:1px solid var(--line);border-radius:.4rem;line-height:1.5}
+.enonce h3{margin:0 0 .4rem;font:700 1.05rem var(--head);color:var(--acc)}
+.enonce img{max-width:100%;height:auto;display:block;margin:.6rem auto 0;border-radius:.3rem;background:#fff}
+.q.vf .opts{display:flex;gap:.6rem;flex-wrap:wrap}
+.q.vf label{border-color:var(--line);min-width:6.5rem;justify-content:center}
 .q .defi-t{font:700 1.2rem var(--hand);background:var(--acc);color:var(--on);padding:0 .5rem;border-radius:.2rem}
 .q label{display:flex;gap:.6rem;align-items:flex-start;padding:.4rem .6rem;border-radius:.4rem;cursor:pointer;border:1px solid transparent}
 .q label:hover{background:color-mix(in srgb,var(--acc) 10%,transparent)}
@@ -141,8 +151,8 @@ footer{padding-block:3rem 2rem;color:var(--soft);font-size:.85rem}
    ===================================================================== */
 const $=s=>document.querySelector(s), dlg=$('#dlg');
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const fm=s=>esc(s).replace(/_\{([^}]*)\}/g,'<sub>$1</sub>').replace(/\^\{([^}]*)\}/g,'<sup>$1</sup>');
-const plain=s=>String(s??'').replace(/_\{([^}]*)\}/g,'$1').replace(/\^\{([^}]*)\}/g,'$1');
+const fm=s=>esc(s).replace(/\\vec\{([^}]*)\}/g,'<span class="vec">$1</span>').replace(/_\{([^}]*)\}/g,'<sub>$1</sub>').replace(/\^\{([^}]*)\}/g,'<sup>$1</sup>');
+const plain=s=>String(s??'').replace(/\\vec\{([^}]*)\}/g,'$1').replace(/_\{([^}]*)\}/g,'$1').replace(/\^\{([^}]*)\}/g,'$1');
 const slug=s=>plain(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const fileUrl=u=>encodeURI(String(u||'').replace(/^\//,''));
 const httpUrl=u=>/^https?:\/\//i.test(String(u||'').trim())?String(u).trim():'#';
@@ -153,6 +163,8 @@ const PAL={
  vert:['#cfead8','#bfe3cb','#dbf0e2','#c6e8d2'], orange:['#fbe3c4','#f8d6ab','#fdebd5','#f9dcb7'],
  rose:['#f9d5e2','#f4c3d6','#fbe1ea','#f6cbdb'], turquoise:['#c9ebe7','#b6e2dd','#d8f1ee','#bfe6e1']
 };
+/* variantes par thème : une famille de couleur distincte par grande partie (rubrique verte) */
+const PALV={vert:['#cfead8','#c4e8e1','#e1e9c8'],bleu:['#cfe3f8','#c6e5ee','#d8d9f5','#c5d5ec'],violet:['#ded3f4','#efd6ec','#d3d7f4','#dccbe8']};
 const TYPES={fiche:'Fiche',carte:'Carte mentale',qcm:'QCM',lien:'Lien',python:'Python'};
 const S={acc:{},rub:{},order:[],cur:null};
 
@@ -188,8 +200,8 @@ function page(k){
     if(s.theme!==lastTheme){ti++;lastTheme=s.theme;h+=`<h2 class="th">${fm(s.theme)}</h2>`}
     if(s.partie)h+=`<h3 class="pt">${fm(s.partie)}</h3>`;
     h+=`<div class="grid">${(s.postits||[]).map((p,j)=>{
-      const n=(p.ressources||[]).length,bg=n?` style="--bg:${(PAL[r.couleur]||PAL.bleu)[ti%4]}"`:'';
-      return `<button class="pi${n?'':' vide'}"${bg} data-open="${k}/${slug((p.code||'')+' '+p.titre)}"><span class="code">${esc(p.code||'')}</span><span class="tx">${fm(p.titre)}</span><span class="st">${n?n+(n>1?' ressources':' ressource'):'bientôt'}</span></button>`}).join('')}</div>`;
+      const n=(p.ressources||[]).length,V=PALV[r.couleur],bg=n?` style="--bg:${V?V[ti%V.length]:(PAL[r.couleur]||PAL.bleu)[ti%4]}"`:'';
+      return `<button class="pi${n?'':' vide'}"${bg} data-open="${k}/${slug((p.code||'')+' '+p.titre)}"><span class="code">${esc(p.code||'')}</span><span class="tx">${fm(p.titre)}</span>${!n?'<span class="st">bientôt</span>':r.compteur===false?'':`<span class="st">${n+(n>1?' ressources':' ressource')}</span>`}</button>`}).join('')}</div>`;
   });
   $('#main').innerHTML=h||'<p class="intro">Cette rubrique est vide pour le moment.</p>';
 }
@@ -197,8 +209,11 @@ function page(k){
 /* ---------- fenêtre d'un post-it ---------- */
 function findPostit(k,sl){
   const r=S.rub[k];if(!r)return null;
-  for(const s of r.sections||[])for(const p of s.postits||[])if(slug((p.code||'')+' '+p.titre)===sl)return {s,p,r};
-  return null;
+  let best=null,bl=0;
+  for(const s of r.sections||[])for(const p of s.postits||[]){const k2=slug((p.code||'')+' '+p.titre);if(k2===sl)return {s,p,r};
+    /* lien ancien (titre raccourci depuis) : le nouveau nom est le début de l'ancien */
+    if(sl.startsWith(k2+'-')&&k2.length>bl){best={s,p,r};bl=k2.length}}
+  return best;
 }
 function openPostit(k,sl){
   const f=findPostit(k,sl);if(!f){location.hash=k;return}
@@ -293,12 +308,34 @@ async function qr(target,name){
 /* ---------- QCM ---------- */
 async function openQcm(id){
   let q;try{q=await J('content/qcm/'+id+'.json')}catch(e){location.hash=S.cur||'accueil';return}
-  const Q=q.questions||[];
+  const ALL=(q.questions||[]).map(x=>(x.format==='vraifaux'||x.type==='vraifaux')?{...x,vf:1,choix:['Vrai','Faux'],bonne:x.vrai?1:2}:{...x});
+  const mix=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+  /* blocs : une question isolée, ou un exercice (énoncé + questions qui suivent jusqu'au prochain énoncé) */
+  const B=[];let cur=null;
+  ALL.forEach(x=>{if((x.enonce||'').trim()){cur=[x];B.push({ex:1,q:cur})}else if(cur)cur.push(x);else B.push({ex:0,q:[x]})});
+  const nT=+q.tirage||0;let sel=B;
+  if(nT>0&&nT<ALL.length){
+    const solo=mix(B.filter(b=>!b.ex&&!b.q[0].defi)),exo=mix(B.filter(b=>b.ex)),defi=B.filter(b=>!b.ex&&b.q[0].defi);
+    let n=0;const pick=[];
+    const tryAdd=b=>{if(n+b.q.length<=nT||!pick.length){pick.push(b);n+=b.q.length}};
+    /* environ un tiers d'exercices, le reste en questions isolées, le Défi isolé en dernier s'il reste de la place */
+    const cible=Math.round(nT/3);let ne=0;for(const b of exo){if(ne>=cible)break;if(n+b.q.length<=nT){pick.push(b);n+=b.q.length;ne+=b.q.length}}
+    for(const b of solo){if(n>=nT-defi.length)break;tryAdd(b)}
+    for(const b of defi)tryAdd(b);
+    for(const b of solo){if(n>=nT)break;if(!pick.includes(b))tryAdd(b)}
+    sel=[...mix(pick.filter(b=>!b.ex&&!b.q[0].defi)),...pick.filter(b=>b.ex),...pick.filter(b=>!b.ex&&b.q[0].defi)];
+  }
+  const Q=sel.flatMap(b=>b.q);
+  if(q.melanger)Q.forEach(x=>{if(x.vf||!Array.isArray(x.choix))return;const ord=mix(x.choix.map((_,j)=>j));const b=(+x.bonne||1)-1;x.choix=ord.map(j=>x.choix[j]);x.bonne=ord.indexOf(b)+1});
+  const fb=s=>fm(s).replace(/\n/g,'<br>');
+  let ex=0;
+  const blocs=Q.map((x,i)=>{
+   const e=(x.enonce||'').trim(),en=e?`<div class="enonce"><h3>Exercice ${++ex}</h3>${fb(e)}${x.figure?`<img src="${fileUrl(x.figure)}" alt="Figure de l’exercice ${ex}" loading="lazy">`:''}</div>`:'';
+   return en+`<fieldset class="q${x.defi?' defi':''}${x.vf?' vf':''}"><legend>${i+1}. ${x.defi?'<span class="defi-t">Défi</span> ':''}${x.vf?'<em>Vrai ou faux ?</em> ':''}${fb(x.question)}</legend><div class="opts">${(x.choix||[]).map((o,j)=>
+   `<label><input type="radio" name="q${i}" value="${j}"><span>${fm(o)}</span></label>`).join('')}</div></fieldset>`}).join('');
   dlg.classList.remove('wide');
-  dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${fm(q.titre)}</h2><p>${Q.length} questions. Rien n’est enregistré : le résultat reste sur ton écran.</p></div><button class="x" aria-label="Fermer" data-close>×</button></div>
-  <div class="db"><div class="score" id="score" tabindex="-1"></div><form id="f">${Q.map((x,i)=>
-   `<fieldset class="q${x.defi?' defi':''}"><legend>${i+1}. ${x.defi?'<span class="defi-t">Défi</span> ':''}${fm(x.question)}</legend>${(x.choix||[]).map((o,j)=>
-   `<label><input type="radio" name="q${i}" value="${j}"><span>${fm(o)}</span></label>`).join('')}</fieldset>`).join('')}
+  dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${fm(q.titre)}</h2><p>${Q.length} questions${Q.length<ALL.length?` tirées au hasard parmi ${ALL.length} : chaque essai est différent`:''}. Garde un brouillon à portée de main. Rien n’est enregistré : le résultat reste sur ton écran.</p></div><button class="x" aria-label="Fermer" data-close>×</button></div>
+  <div class="db"><div class="score" id="score" tabindex="-1"></div><form id="f">${blocs}
    <button type="button" class="btn" id="val">Valider mes réponses</button>
    <button type="button" class="btn alt" id="again" style="display:none">Recommencer</button>
    <button type="button" class="btn alt" data-qr="qcm-${id}">QR code de ce QCM</button></form>${qrBox()}</div>`;
@@ -310,7 +347,7 @@ async function openQcm(id){
       labs.forEach((l,j)=>{if(j===a)l.classList.add('good');else if(j===v)l.classList.add('bad')});
       fs.querySelectorAll('input').forEach(e=>e.disabled=true);
       const p=document.createElement('p');p.className='exp';
-      p.innerHTML=`<strong>${v===a?'Correct.':v<0?'Pas de réponse.':'Incorrect.'}</strong> ${fm(x.explication||'')}`;fs.append(p);
+      p.innerHTML=`<strong>${v===a?'Correct.':v<0?'Pas de réponse.':'Incorrect.'}</strong>${x.vf?` L’affirmation est <strong>${x.vrai?'vraie':'fausse'}</strong>.`:''} ${fb(x.explication||'')}`;fs.append(p);
     });
     const n=Q.length,m=sc===n?'Parfait, tu maîtrises ce chapitre.':sc>=n*.6?'Bien joué, relis les corrections des erreurs.':'Reprends la fiche du chapitre puis recommence.';
     const el=$('#score');el.style.display='block';el.innerHTML=`<strong>${sc} / ${n}</strong><p>${m}</p>`;el.focus();
