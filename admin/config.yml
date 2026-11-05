@@ -72,6 +72,7 @@ collections:
           - { label: Rose, value: rose }
           - { label: Turquoise, value: turquoise }
       - { label: Texte d’introduction, name: intro, widget: text, required: false }
+      - { label: Afficher le nombre de ressources sur les post-it, name: compteur, widget: boolean, default: true, required: false }
       - label: Sections
         name: sections
         widget: list
@@ -153,19 +154,33 @@ collections:
     summary: "{{titre}}"
     fields:
       - { label: Titre du QCM, name: titre, widget: string }
+      - { label: "Nombre de questions tirées au hasard à chaque essai (vide = toutes)", name: tirage, widget: number, value_type: int, min: 1, required: false }
+      - { label: "Mélanger l’ordre des propositions à chaque essai", name: melanger, widget: boolean, default: false, required: false }
       - label: Questions
         name: questions
         widget: list
         label_singular: question
         summary: "{{fields.question}}"
-        hint: "Exposants et indices : écrire ^{2} pour une puissance (m^{2}) et _{2} pour un indice (H_{2}O)."
+        hint: "Exposants et indices : écrire ^{2} pour une puissance (m^{2}) et _{2} pour un indice (H_{2}O). Vecteur : \\vec{v} (flèche au-dessus)."
         fields:
-          - { label: Question, name: question, widget: text }
+          - { label: "Énoncé d’un nouvel exercice (laisser vide si la question suit l’exercice précédent)", name: enonce, widget: text, required: false }
+          - { label: "Figure de l’exercice (image, facultatif)", name: figure, widget: image, required: false }
+          - label: Format de la question
+            name: format
+            widget: select
+            default: choix
+            required: false
+            options:
+              - { label: "Choix multiples", value: choix }
+              - { label: "Vrai ou faux", value: vraifaux }
+          - { label: Question (ou affirmation si « Vrai ou faux »), name: question, widget: text }
           - { label: Question plus difficile (« Défi »), name: defi, widget: boolean, default: false, required: false }
-          - label: Propositions de réponse
+          - label: Propositions de réponse (choix multiples seulement)
             name: choix
             widget: list
+            required: false
             label_singular: proposition
             field: { label: Proposition, name: choix, widget: string }
-          - { label: Numéro de la bonne proposition (1 = la première), name: bonne, widget: number, value_type: int, min: 1, default: 1 }
+          - { label: "Numéro de la bonne proposition (choix multiples, 1 = la première)", name: bonne, widget: number, value_type: int, min: 1, default: 1, required: false }
+          - { label: "Vrai ou faux : l’affirmation est vraie", name: vrai, widget: boolean, default: false, required: false }
           - { label: Correction détaillée, name: explication, widget: text }
