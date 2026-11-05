@@ -1,58 +1,14 @@
 {
   "nom": "Fiches méthodes et ECE",
   "couleur": "vert",
-  "intro": "Fiches et Outils utiles en 1ère et Tle et ECE",
+  "intro": "Fiches utiles en 1ère et Tle et ECE :  Chimie - Physique - Outils maths",
   "sections": [
     {
-      "theme": "Fiches méthodes et ECE",
-      "partie": "",
+      "theme": "CHIMIE",
+      "partie": "Fiches protocoles - ECE - Savoir faire",
       "postits": [
         {
-          "code": "M",
-          "titre": "Outils calculs en PC & Maths : lettres - Chiffres significatifs - Incertitudes",
-          "ressources": [
-            {
-              "type": "fiche",
-              "titre": "Outils Calculs",
-              "fichier": "/media/0-Tablette_Fiches methodes Tle maths.pdf"
-            }
-          ]
-        },
-        {
-          "code": "R",
-          "titre": "Regressi",
-          "ressources": [
-            {
-              "type": "fiche",
-              "titre": "REGRESSI",
-              "fichier": "/media/0-Fiche_Methode_Regressi.pdf"
-            }
-          ]
-        },
-        {
-          "code": "A",
-          "titre": "Audacity : Fiche méthode",
-          "ressources": [
-            {
-              "type": "fiche",
-              "titre": "Audacity",
-              "fichier": "/media/0-Fiche_Methode_Audacity.pdf"
-            }
-          ]
-        },
-        {
-          "code": "E",
-          "titre": "Electricité - Ondes - Oscillo : Fiche Méthode",
-          "ressources": [
-            {
-              "type": "fiche",
-              "titre": "Electricite",
-              "fichier": "/media/0-Fiche_Methode_Oscillo_Electricite.pdf"
-            }
-          ]
-        },
-        {
-          "code": "C",
+          "code": "1-",
           "titre": "CCM : Fiche Méthode",
           "ressources": [
             {
@@ -63,7 +19,7 @@
           ]
         },
         {
-          "code": "D",
+          "code": "2-",
           "titre": "Dessiner des Molécules : Chemskecth ou kingdraw",
           "ressources": [
             {
@@ -74,7 +30,7 @@
           ]
         },
         {
-          "code": "D",
+          "code": "3-",
           "titre": "Dilution : Fiche Méthode",
           "ressources": [
             {
@@ -85,7 +41,7 @@
           ]
         },
         {
-          "code": "D",
+          "code": "4-",
           "titre": "Dissolution : Fiche Méthode",
           "ressources": [
             {
@@ -96,7 +52,7 @@
           ]
         },
         {
-          "code": "E",
+          "code": "5-",
           "titre": "Extraction Liquide - Liquide : Fiche Méthode",
           "ressources": [
             {
@@ -107,7 +63,7 @@
           ]
         },
         {
-          "code": "F",
+          "code": "6-",
           "titre": "Filtration : Fiche Méthode",
           "ressources": [
             {
@@ -118,7 +74,7 @@
           ]
         },
         {
-          "code": "M",
+          "code": "7-",
           "titre": "Masse Volumique : Fiche méthode",
           "ressources": [
             {
@@ -129,7 +85,7 @@
           ]
         },
         {
-          "code": "N",
+          "code": "8-",
           "titre": "Nomenclature et CHO au Lycée : Fiche méthode",
           "ressources": [
             {
@@ -140,7 +96,7 @@
           ]
         },
         {
-          "code": "P",
+          "code": "9-",
           "titre": "Pictogrammes de Sécurité en Chimie",
           "ressources": [
             {
@@ -151,7 +107,7 @@
           ]
         },
         {
-          "code": "V",
+          "code": "10-",
           "titre": "Verrerie et Matériel courant au lycée",
           "ressources": [
             {
@@ -160,37 +116,148 @@
               "fichier": "/media/0-Chimie_Verrerie_materiel.pdf"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "theme": "OUTILS",
+      "partie": "Regressi - Fiches Maths",
+      "postits": [
         {
-          "code": "V",
-          "titre": "Traitement Vidéo : Aviméca ou Régressi",
+          "code": "1-",
+          "titre": "Regressi : fiche méthode",
           "ressources": [
             {
               "type": "fiche",
-              "titre": "Video",
-              "fichier": "/media/0-Fiche_Methode_Video.pdf"
+              "titre": "Regressi",
+              "fichier": "/media/0-Fiche_Methode_Regressi.pdf"
             }
           ]
         },
         {
-          "code": "S",
-          "titre": "Spectrophotomètre : Fiche Méthode",
+          "code": "2-",
+          "titre": "Puissances de 10 - Chiffres significatifs - Ordre de grandeur",
           "ressources": [
             {
               "type": "fiche",
-              "titre": "Spectro",
+              "titre": "Math",
+              "fichier": "/media/0-Maths_Puissances_CS_OG.pdf"
+            }
+          ]
+        },
+        {
+          "code": "3-",
+          "titre": "Alphabet Grec",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Grec",
+              "fichier": "/media/0-Alphabet grec.pdf"
+            }
+          ]
+        },
+        {
+          "code": "4-",
+          "titre": "Consignes pour comprendre les questions",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Consignes",
+              "fichier": "/media/0-Consignes.pdf"
+            }
+          ]
+        },
+        {
+          "code": "5-",
+          "titre": "Consignes pour les représentations graphiques",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Consignes graphes",
+              "fichier": "/media/0-Consignes_graphique.pdf"
+            }
+          ]
+        },
+        {
+          "code": "6-",
+          "titre": "Incertitudes",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Incertitudes",
+              "fichier": "/media/0-Maths_Incertitudes.pdf"
+            }
+          ]
+        },
+        {
+          "code": "7-",
+          "titre": "Equa Diff (PC lycée)",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Equa diff",
+              "fichier": "/media/0-Maths_Equa_diff.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "PHYSIQUE",
+      "partie": "Fiches matériels - ECE",
+      "postits": [
+        {
+          "code": "1-",
+          "titre": "Audacity : fiche méthode simplifiée",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Audacity utilisation simple",
+              "fichier": "/media/0-Fiche_Methode_Audacity.pdf"
+            }
+          ]
+        },
+        {
+          "code": "2-",
+          "titre": "Image : traitement par Mesurim2 ou SalsaJ",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Images",
+              "fichier": "/media/0-Fiche_Methode_Traitement image.pdf"
+            }
+          ]
+        },
+        {
+          "code": "3-",
+          "titre": "Electricité - Oscilloscope - Multimètre - RC",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Matériel électricité",
+              "fichier": "/media/0-Fiche_Methode_Oscillo_Electricite.pdf"
+            }
+          ]
+        },
+        {
+          "code": "4-",
+          "titre": "Spectrophotomètre : fiche SPID HR",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Fiche méthode : SPID HR",
               "fichier": "/media/0-Fiche_Methode_Spectrophotometre.pdf"
             }
           ]
         },
         {
-          "code": "I",
-          "titre": "Images : Fiche méthode Mesurim2 ou SalsaJ",
+          "code": "5-",
+          "titre": "Vidéo : traitement par Régressi ou Aviméca",
           "ressources": [
             {
               "type": "fiche",
-              "titre": "Image",
-              "fichier": "/media/0-Fiche_Methode_Traitement image.pdf"
+              "titre": "Vidéo",
+              "fichier": "/media/0-Fiche_Methode_Video.pdf"
             }
           ]
         }
