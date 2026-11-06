@@ -1,5 +1,6 @@
 {
   "slogan": "Physique-chimie au lycée : QCM corrigés et fiches méthodes",
+  "statistiques": "jesuistaprof",
   "bienvenue": "Ressources de physique-chimie pour les élèves de Première et de Terminale spécialité, rangées selon les programmes officiels. Un post-it gris signale une ressource bientôt disponible.",
   "menu": [
     "premiere",
@@ -24,6 +25,5 @@
       "description": "Simulations interactives de physique et de chimie."
     }
   ],
-  "pied": "Programmes de référence : Première, BO spécial n° 1 du 22 janvier 2019 ; Terminale, BO spécial n° 8 du 25 juillet 2019. Les QCM n’enregistrent aucune donnée personnelle : le résultat reste sur l’écran de l’élève. Un compteur anonyme, sans cookie, mesure seulement la fréquentation du site.",
-  "statistiques": ""
+  "pied": "Programmes de référence : Première, BO spécial n° 1 du 22 janvier 2019 ; Terminale, BO spécial n° 8 du 25 juillet 2019. Les QCM n’enregistrent aucune donnée personnelle : le résultat reste sur l’écran de l’élève. Un compteur anonyme, sans cookie, mesure seulement la fréquentation du site."
 }
