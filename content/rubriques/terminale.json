@@ -10,7 +10,26 @@
         {
           "code": "1",
           "titre": "Modélisation des transformations acide-base",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-01-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-01-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-01-controle"
+            }
+          ]
         },
         {
           "code": "2",
