@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JeSuisTaProf – Physique-chimie au lycée : fiches, cartes mentales et QCM (Première et Terminale spécialité)</title>
-<meta name="description" content="JeSuisTaProf : ressources de physique-chimie pour les élèves de Première et Terminale spécialité, organisées selon les programmes officiels. Fiches, cartes mentales, QCM corrigés, fiches méthodes et programmes Python.">
+<title>JeSuisTaProf – Physique-chimie au lycée : QCM corrigés et fiches méthodes (Première et Terminale spécialité)</title>
+<meta name="description" content="JeSuisTaProf : ressources de physique-chimie pour les élèves de Première et Terminale spécialité, organisées selon les programmes officiels. QCM corrigés, fiches méthodes et programmes Python.">
 <link rel="canonical" href="https://jesuistaprof.github.io/">
 <meta name="theme-color" content="#2b6cb0">
 <meta property="og:type" content="website">
@@ -102,6 +102,11 @@ dialog::backdrop{background:rgba(20,28,43,.5)}
 .vec::before{content:'';position:absolute;left:.06em;right:.02em;top:.08em;height:.08em;background:currentColor;border-radius:.04em}
 .vec::after{content:'';position:absolute;right:-.02em;top:-.05em;border:.17em solid transparent;border-left:.3em solid currentColor;border-right:0}
 .q.defi{border-left-color:var(--acc)}
+.niv{display:inline-block;font:700 .78rem/1.5 var(--body);padding:0 .5rem;border-radius:1rem;margin-right:.4rem;vertical-align:.1em;white-space:nowrap;color:#fff}
+.niv.n1{background:color-mix(in srgb,var(--acc) 55%,#6aa86e)}.niv.n2{background:color-mix(in srgb,var(--acc) 70%,#d08a3a)}.niv.n3{background:color-mix(in srgb,var(--acc) 60%,#b0452f)}
+.res .sous{display:block;font-size:.85rem;color:#4a5562;margin-top:.15rem}
+.printmsg{display:none}
+@media print{body.qcm-on>*:not(.printmsg),body.qcm-on dialog{display:none!important}body.qcm-on .printmsg{display:block;font:1.2rem/1.5 sans-serif;padding:3rem}}
 .enonce{margin:1.6rem 0 .4rem;padding:.8rem 1rem;background:color-mix(in srgb,var(--acc) 8%,var(--panel));border:1px solid var(--line);border-radius:.4rem;line-height:1.5}
 .enonce h3{margin:0 0 .4rem;font:700 1.05rem var(--head);color:var(--acc)}
 .enonce img{max-width:100%;height:auto;display:block;margin:.6rem auto 0;border-radius:.3rem;background:#fff}
@@ -118,6 +123,9 @@ dialog::backdrop{background:rgba(20,28,43,.5)}
 .score{display:none;margin:1rem 0;padding:1rem 1.2rem;background:color-mix(in srgb,var(--acc) 16%,var(--panel));border-left:6px solid var(--acc);border-radius:.3rem}
 .score strong{font:700 2.2rem/1 var(--head)}
 .score p{margin:.3rem 0 0;font:700 1.4rem/1.2 var(--hand)}
+.score .det{font:500 .95rem/1.45 var(--body);margin-top:.5rem}
+.bareme{margin:.2rem 0 .8rem;padding:.6rem .8rem;border:1px dashed var(--acc);border-radius:.4rem;font-size:.95rem}
+.clr{margin:.3rem 0 0 .2rem;background:none;border:0;padding:.1rem .2rem;color:var(--soft);font:inherit;font-size:.85rem;text-decoration:underline;cursor:pointer}
 .qr{display:none;margin-top:1rem;padding:1rem;border:2px dashed var(--line);text-align:center}
 .qr .qc{display:inline-block;padding:10px;background:#fff}
 footer{padding-block:3rem 2rem;color:var(--soft);font-size:.85rem}
@@ -140,8 +148,9 @@ footer{padding-block:3rem 2rem;color:var(--soft);font-size:.85rem}
   <nav aria-label="Rubriques" id="nav"></nav>
 </header>
 <main id="main"><p class="intro">Chargement…</p></main>
-<noscript><main><p>JeSuisTaProf regroupe des ressources de physique-chimie (fiches de cours, cartes mentales, QCM corrigés, fiches méthodes, programmes Python) pour les classes de Première et Terminale spécialité, organisées selon les programmes officiels. Ce site nécessite JavaScript.</p></main></noscript>
+<noscript><main><p>JeSuisTaProf regroupe des ressources de physique-chimie (QCM corrigés, fiches méthodes, programmes Python) pour les classes de Première et Terminale spécialité, organisées selon les programmes officiels. Ce site nécessite JavaScript.</p></main></noscript>
 <footer id="foot"></footer>
+<p class="printmsg">Les QCM de JeSuisTaProf se font en ligne : ils ne peuvent pas être imprimés. Rendez-vous sur jesuistaprof.github.io.</p>
 <dialog id="dlg" aria-labelledby="dt"></dialog>
 
 <script>
@@ -175,6 +184,8 @@ async function init(){
   for(const r of res)if(r){S.rub[r[0]]=r[1];S.order.push(r[0])}
   $('#tag').textContent=S.acc.slogan||'Physique-chimie au lycée';
   $('#foot').textContent=S.acc.pied||'';
+  const gc=(S.acc.statistiques||'').trim().toLowerCase();
+  if(/^[a-z0-9-]+$/.test(gc)){const t=document.createElement('script');t.async=true;t.src='https://gc.zgo.at/count.js';t.dataset.goatcounter='https://'+gc+'.goatcounter.com/count';document.head.append(t)}
   $('#nav').innerHTML=`<a href="#accueil" data-k="accueil">Accueil</a>`+S.order.map(k=>`<a href="#${k}" data-k="${k}" style="--c:var(--c-${S.rub[k].couleur||'bleu'})">${fm(S.rub[k].nom)}</a>`).join('');
   route();
 }
@@ -186,7 +197,7 @@ function page(k){
   const r=S.rub[k];
   document.body.style.setProperty('--acc',r?`var(--c-${r.couleur||'bleu'})`:'var(--c-accueil)');
   if(!r){
-    document.title='JeSuisTaProf – Physique-chimie au lycée : fiches, cartes mentales et QCM';
+    document.title='JeSuisTaProf – Physique-chimie au lycée : QCM corrigés et fiches méthodes';
     const tiles=S.order.map(x=>{const q=S.rub[x],n=q.sections.reduce((t,s)=>t+s.postits.length,0);
       return `<a class="pi" href="#${x}" style="--bg:${(PAL[q.couleur]||PAL.bleu)[0]}"><span class="code long">${fm(q.nom)}</span><span class="tx">${fm(q.intro||'')}</span><span class="st">${n} post-it</span></a>`}).join('');
     const liens=(S.acc.liens||[]).map(l=>`<a class="pi" href="${esc(httpUrl(l.url))}" target="_blank" rel="noopener"><span class="code long">${esc(l.nom)}</span><span class="tx">${esc(l.description||'')}</span><span class="st">ouvrir le site</span></a>`).join('');
@@ -222,8 +233,7 @@ function openPostit(k,sl){
   dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${p.code?esc(p.code)+') ':''}${fm(p.titre)}</h2><p>${fm(s.theme)}${s.partie?' · '+fm(s.partie):''}</p></div><button class="x" aria-label="Fermer" data-close>×</button></div><div class="db" id="body"></div>`;
   const list=()=>{
     dlg.classList.remove('wide');dlg._z=null;
-    $('#body').innerHTML=res.length?`<div class="res">${res.map((x,i)=>`<button data-res="${i}" style="--bg:${col[i%4]}"><b>${TYPES[x.type]||'Ressource'}</b><span>${fm(x.titre)}</span></button>`).join('')}</div>
-      <p><button class="btn alt" data-qr="${k}/${sl}">QR code de ce post-it</button></p>${qrBox()}`
+    $('#body').innerHTML=res.length?`<div class="res">${res.map((x,i)=>`<button data-res="${i}" style="--bg:${col[i%4]}"><b>${TYPES[x.type]||'Ressource'}</b><span>${x.type==='qcm'&&NIV[x.niveau]?nivBadge(x.niveau):''}${fm(x.titre)}${x.type==='qcm'&&NIV[x.niveau]?`<span class="sous">${NIV[x.niveau][1]}</span>`:''}</span></button>`).join('')}</div>`
       :`<p class="vide-msg">Les ressources de ce post-it arrivent bientôt.</p>`;
     if(res.length===1&&!(res[0].type==='lien'&&!res[0].integrer))show(0);
   };
@@ -306,14 +316,25 @@ async function qr(target,name){
 }
 
 /* ---------- QCM ---------- */
+const NIV={1:['★','Cours et TP, sans calcul · objectif 90 %'],2:['★★','Calculs courts'],3:['★★★','Énoncés type contrôle · barème +1 / −1']};
+const nivBadge=n=>`<span class="niv n${n}">Niveau ${n} ${NIV[n][0]}</span>`;
+/* questions protégées : champ q64 = base64(octets UTF-8 du JSON XOR clé) */
+const unveil=q=>{if(!q.q64)return q;const k=new TextEncoder().encode('JeSuisTaProf'),b=Uint8Array.from(atob(q.q64),c=>c.charCodeAt(0)).map((v,i)=>v^k[i%k.length]);return {...q,questions:JSON.parse(new TextDecoder().decode(b))}};
+const stat=path=>{try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path,title:path,event:true})}catch(e){}};
 async function openQcm(id){
-  let q;try{q=await J('content/qcm/'+id+'.json')}catch(e){location.hash=S.cur||'accueil';return}
+  let q;try{q=unveil(await J('content/qcm/'+id+'.json'))}catch(e){location.hash=S.cur||'accueil';return}
+  document.body.classList.add('qcm-on');stat('qcm/'+id+'/ouvert');
   const ALL=(q.questions||[]).map(x=>(x.format==='vraifaux'||x.type==='vraifaux')?{...x,vf:1,choix:['Vrai','Faux'],bonne:x.vrai?1:2}:{...x});
   const mix=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
   /* blocs : une question isolée, ou un exercice (énoncé + questions qui suivent jusqu'au prochain énoncé) */
   const B=[];let cur=null;
   ALL.forEach(x=>{if((x.enonce||'').trim()){cur=[x];B.push({ex:1,q:cur})}else if(cur)cur.push(x);else B.push({ex:0,q:[x]})});
-  const nT=+q.tirage||0;let sel=B;
+  const nT=+q.tirage||0,nX=+q.tirage_exercices||0,conc=q.bareme==='concours',obj=+q.objectif||0;let sel=B;
+  if(nX>0&&nX<B.filter(b=>b.ex).length){
+    /* on garde toutes les questions isolées et on tire nX exercices entiers */
+    const keep=new Set(mix(B.filter(b=>b.ex)).slice(0,nX));
+    sel=[...B.filter(b=>!b.ex&&!b.q[0].defi),...mix([...keep]),...B.filter(b=>!b.ex&&b.q[0].defi)];
+  }else
   if(nT>0&&nT<ALL.length){
     const solo=mix(B.filter(b=>!b.ex&&!b.q[0].defi)),exo=mix(B.filter(b=>b.ex)),defi=B.filter(b=>!b.ex&&b.q[0].defi);
     let n=0;const pick=[];
@@ -332,25 +353,33 @@ async function openQcm(id){
   const blocs=Q.map((x,i)=>{
    const e=(x.enonce||'').trim(),en=e?`<div class="enonce"><h3>Exercice ${++ex}</h3>${fb(e)}${x.figure?`<img src="${fileUrl(x.figure)}" alt="Figure de l’exercice ${ex}" loading="lazy">`:''}</div>`:'';
    return en+`<fieldset class="q${x.defi?' defi':''}${x.vf?' vf':''}"><legend>${i+1}. ${x.defi?'<span class="defi-t">Défi</span> ':''}${x.vf?'<em>Vrai ou faux ?</em> ':''}${fb(x.question)}</legend><div class="opts">${(x.choix||[]).map((o,j)=>
-   `<label><input type="radio" name="q${i}" value="${j}"><span>${fm(o)}</span></label>`).join('')}</div></fieldset>`}).join('');
+   `<label><input type="radio" name="q${i}" value="${j}"><span>${fm(o)}</span></label>`).join('')}</div>${conc?`<button type="button" class="clr" data-clr="${i}">Effacer ma réponse</button>`:''}</fieldset>`}).join('');
   dlg.classList.remove('wide');
-  dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${fm(q.titre)}</h2><p>${Q.length} questions${Q.length<ALL.length?` tirées au hasard parmi ${ALL.length} : chaque essai est différent`:''}. Garde un brouillon à portée de main. Rien n’est enregistré : le résultat reste sur ton écran.</p></div><button class="x" aria-label="Fermer" data-close>×</button></div>
+  dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${NIV[q.niveau]?nivBadge(q.niveau)+'<br>':''}${fm(q.titre)}</h2><p>${nX>0&&nX<B.filter(b=>b.ex).length?`${nX} exercices tirés au hasard parmi ${B.filter(b=>b.ex).length}, soit ${Q.length} questions : chaque essai est différent`:`${Q.length} questions${Q.length<ALL.length?` tirées au hasard parmi ${ALL.length} : chaque essai est différent`:''}`}. Garde un brouillon à portée de main. Rien n’est enregistré : le résultat reste sur ton écran.</p>${conc?`<p class="bareme"><strong>Barème concours</strong> : +1 si la réponse est juste, −1 si elle est fausse, 0 si tu ne réponds pas. Ne coche que ce que tu as vérifié par le calcul.</p>`:''}${obj?`<p class="bareme"><strong>Objectif</strong> : au moins ${obj} % de bonnes réponses.</p>`:''}</div><button class="x" aria-label="Fermer" data-close>×</button></div>
   <div class="db"><div class="score" id="score" tabindex="-1"></div><form id="f">${blocs}
    <button type="button" class="btn" id="val">Valider mes réponses</button>
    <button type="button" class="btn alt" id="again" style="display:none">Recommencer</button>
-   <button type="button" class="btn alt" data-qr="qcm-${id}">QR code de ce QCM</button></form>${qrBox()}</div>`;
+</form></div>`;
   $('#val').onclick=()=>{
-    let sc=0;
+    let sc=0,nf=0,nv=0;
+    document.querySelectorAll('.clr').forEach(b=>b.remove());
     Q.forEach((x,i)=>{
       const fs=document.querySelectorAll('.q')[i],labs=fs.querySelectorAll('label'),ch=fs.querySelector('input:checked'),v=ch?+ch.value:-1,a=(+x.bonne||1)-1;
-      if(v===a)sc++;
+      if(v===a)sc++;else if(v<0)nv++;else nf++;
       labs.forEach((l,j)=>{if(j===a)l.classList.add('good');else if(j===v)l.classList.add('bad')});
       fs.querySelectorAll('input').forEach(e=>e.disabled=true);
       const p=document.createElement('p');p.className='exp';
       p.innerHTML=`<strong>${v===a?'Correct.':v<0?'Pas de réponse.':'Incorrect.'}</strong>${x.vf?` L’affirmation est <strong>${x.vrai?'vraie':'fausse'}</strong>.`:''} ${fb(x.explication||'')}`;fs.append(p);
     });
-    const n=Q.length,m=sc===n?'Parfait, tu maîtrises ce chapitre.':sc>=n*.6?'Bien joué, relis les corrections des erreurs.':'Reprends la fiche du chapitre puis recommence.';
-    const el=$('#score');el.style.display='block';el.innerHTML=`<strong>${sc} / ${n}</strong><p>${m}</p>`;el.focus();
+    const n=Q.length,pc=Math.round(100*sc/n),el=$('#score');let h;
+    if(conc){
+      const pts=sc-nf,m=pts===n?'Parfait : tout est juste.':pts>=n*.6?'Très bon résultat, relis les corrections de tes erreurs.':pts>0?'Relis les corrections, refais les calculs au brouillon puis recommence.':'Score nul ou négatif : reprends ton cours et les méthodes avant de recommencer.';
+      h=`<strong>${pts<0?'−'+(-pts):pts} / ${n} points</strong><p>${m}</p><p class="det">${sc} juste${sc>1?'s':''}${sc?` (+${sc})`:''}, ${nf} fausse${nf>1?'s':''}${nf?` (−${nf})`:''}, ${nv} sans réponse.<br>Répondre au hasard rapporte 0 point en moyenne : seules les réponses vérifiées font gagner des points.</p>`;
+    }else{
+      const m=obj?(pc>=obj?`Objectif atteint (${obj} %) : chapitre maîtrisé.`:`Objectif : ${obj} %. Relis les corrections puis recommence.`):(sc===n?'Parfait, tu maîtrises ce chapitre.':sc>=n*.6?'Bien joué, relis les corrections des erreurs.':'Reprends la fiche du chapitre puis recommence.');
+      h=`<strong>${pc} %</strong><p>${m}</p><p class="det">${sc} bonne${sc>1?'s':''} réponse${sc>1?'s':''} sur ${n}.</p>`;
+    }
+    el.style.display='block';el.innerHTML=h;el.focus();stat('qcm/'+id+'/termine');
     $('#val').style.display='none';$('#again').style.display='inline-block';
   };
   $('#again').onclick=()=>openQcm(id);
@@ -375,8 +404,8 @@ document.addEventListener('click',e=>{
   else if('copy' in t.dataset){const b=$('#view');navigator.clipboard&&navigator.clipboard.writeText(b._code||'').then(()=>{t.textContent='Copié'})}
   else dlg.close();
 });
-dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
-dlg.addEventListener('close',()=>{dlg.classList.remove('wide');dlg._z=null;if(/^#(qcm-|[^/]+\/)/.test(location.hash))history.replaceState(null,'','#'+(S.cur||'accueil'))});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();const c=e.target.closest('[data-clr]');if(c)c.closest('fieldset').querySelectorAll('input').forEach(r=>r.checked=false)});
+dlg.addEventListener('close',()=>{document.body.classList.remove('qcm-on');dlg.classList.remove('wide');dlg._z=null;if(/^#(qcm-|[^/]+\/)/.test(location.hash))history.replaceState(null,'','#'+(S.cur||'accueil'))});
 addEventListener('hashchange',route);
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 init();
