@@ -195,12 +195,50 @@
         {
           "code": "13",
           "titre": "Mouvement dans un champ de gravitation",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-13-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-13-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-13-controle"
+            }
+          ]
         },
         {
           "code": "14",
           "titre": "Modélisation de l’écoulement d’un fluide",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-14-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-14-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-14-controle"
+            }
+          ]
         }
       ]
     },
@@ -225,12 +263,50 @@
         {
           "code": "17",
           "titre": "Propagation des ondes",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-17-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-17-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-17-controle"
+            }
+          ]
         },
         {
           "code": "18",
           "titre": "Interférences et diffraction",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-18-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-18-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-18-controle"
+            }
+          ]
         },
         {
           "code": "19",
