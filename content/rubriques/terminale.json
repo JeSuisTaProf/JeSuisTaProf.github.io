@@ -34,7 +34,26 @@
         {
           "code": "2",
           "titre": "Analyse physique d’un système chimique",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-02-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-02-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-02-controle"
+            }
+          ]
         },
         {
           "code": "3",
@@ -60,12 +79,50 @@
         {
           "code": "6",
           "titre": "Évolution spontanée d’un système chimique",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-06-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-06-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-06-controle"
+            }
+          ]
         },
         {
           "code": "7",
           "titre": "Équilibres acide-base",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-07-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-07-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-07-controle"
+            }
+          ]
         },
         {
           "code": "8",
@@ -90,12 +147,50 @@
         {
           "code": "11",
           "titre": "Description d’un mouvement",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-11-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-11-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-11-controle"
+            }
+          ]
         },
         {
           "code": "12",
           "titre": "Mouvement dans un champ uniforme",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "tle-12-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "tle-12-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Comme en contrôle",
+              "niveau": 3,
+              "qcm": "tle-12-controle"
+            }
+          ]
         },
         {
           "code": "13",
