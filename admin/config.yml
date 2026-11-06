@@ -20,6 +20,7 @@ collections:
         format: json
         fields:
           - { label: Slogan (sous le titre du site), name: slogan, widget: string }
+          - { label: "Code du compteur de visites GoatCounter (ex. jesuistaprof ; vide = pas de compteur)", name: statistiques, widget: string, required: false }
           - { label: Texte de bienvenue, name: bienvenue, widget: text }
           - label: Menu du site (dans l’ordre d’affichage)
             name: menu
@@ -118,6 +119,14 @@ collections:
                     summary: "QCM : {{fields.titre}}"
                     fields:
                       - { label: Titre, name: titre, widget: string }
+                      - label: Niveau (badge affiché)
+                        name: niveau
+                        widget: select
+                        required: false
+                        options:
+                          - { label: "Niveau 1 ★ (les fondamentaux)", value: 1 }
+                          - { label: "Niveau 2 ★★ (j’applique)", value: 2 }
+                          - { label: "Niveau 3 ★★★ (comme en contrôle)", value: 3 }
                       - label: QCM à ouvrir
                         name: qcm
                         widget: relation
@@ -156,6 +165,25 @@ collections:
       - { label: Titre du QCM, name: titre, widget: string }
       - { label: "Nombre de questions tirées au hasard à chaque essai (vide = toutes)", name: tirage, widget: number, value_type: int, min: 1, required: false }
       - { label: "Mélanger l’ordre des propositions à chaque essai", name: melanger, widget: boolean, default: false, required: false }
+      - { label: "Nombre d’exercices à énoncé commun tirés à chaque essai (vide = tous)", name: tirage_exercices, widget: number, value_type: int, min: 1, required: false }
+      - label: Barème
+        name: bareme
+        widget: select
+        default: classique
+        required: false
+        options:
+          - { label: "Classique (score en %)", value: classique }
+          - { label: "Concours (+1 juste, −1 faux, 0 sans réponse)", value: concours }
+      - { label: "Objectif de réussite en % (ex. 90 pour les fondamentaux, vide = aucun)", name: objectif, widget: number, value_type: int, min: 1, max: 100, required: false }
+      - label: Niveau (badge affiché)
+        name: niveau
+        widget: select
+        required: false
+        options:
+          - { label: "Niveau 1 ★ (les fondamentaux)", value: 1 }
+          - { label: "Niveau 2 ★★ (j’applique)", value: 2 }
+          - { label: "Niveau 3 ★★★ (comme en contrôle)", value: 3 }
+      - { label: "Contenu protégé (QCM préparés avec Claude : ne pas modifier ici)", name: q64, widget: hidden }
       - label: Questions
         name: questions
         widget: list
