@@ -1,7 +1,7 @@
 {
   "name": "JeSuisTaProf",
   "short_name": "JeSuisTaProf",
-  "description": "Physique-chimie au lycée : fiches, cartes mentales, QCM corrigés, fiches méthodes et programmes Python.",
+  "description": "Physique-chimie au lycée : QCM corrigés, fiches méthodes et programmes Python.",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",
