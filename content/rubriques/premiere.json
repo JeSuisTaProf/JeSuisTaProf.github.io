@@ -22,11 +22,6 @@
               "titre": "J’applique",
               "niveau": 2,
               "qcm": "pre-01-applique"
-            },
-            {
-              "type": "qcm",
-              "titre": "QCM : quantité de matière et concentration",
-              "qcm": "quantite-de-matiere"
             }
           ]
         },
