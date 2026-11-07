@@ -92,6 +92,18 @@
               "type": "fiche",
               "titre": "CHO",
               "fichier": "/media/0-Chimie_Nomenclature iupac.pdf"
+            },
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "methodes-nomenclature-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "methodes-nomenclature-applique"
             }
           ]
         },
