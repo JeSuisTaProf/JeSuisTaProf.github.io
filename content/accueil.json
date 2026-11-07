@@ -23,6 +23,11 @@
       "nom": "Ostralo",
       "url": "https://www.ostralo.net/",
       "description": "Simulations interactives de physique et de chimie."
+    },
+    {
+      "nom": "Mesurim2",
+      "url": "https://cosphilog.fr/mesurim2/",
+      "description": "Logiciel en ligne de mesure et de traitement d’images (longueurs, angles, profils), utilisé en TP."
     }
   ],
   "pied": "Programmes de référence : Première, BO spécial n° 1 du 22 janvier 2019 ; Terminale, BO spécial n° 8 du 25 juillet 2019. Les QCM n’enregistrent aucune donnée personnelle : le résultat reste sur l’écran de l’élève. Un compteur anonyme, sans cookie, mesure seulement la fréquentation du site."
