@@ -10,27 +10,86 @@
         {
           "code": "py",
           "titre": "Composition de l’état final d’une transformation totale",
-          "ressources": []
-        },
-        {
-          "code": "py",
-          "titre": "Histogramme d’une série de mesures",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Consignes du mini-TP",
+              "fichier": "/media/Composition_etat_final_consignes.pdf"
+            },
+            {
+              "type": "python",
+              "titre": "Programme à compléter",
+              "fichier": "/media/Composition_etat_final_a_completer.py"
+            },
+            {
+              "type": "python",
+              "titre": "Programme corrigé",
+              "fichier": "/media/Composition_etat_final_corrige.py"
+            }
+          ]
         },
         {
           "code": "py",
           "titre": "Variation du vecteur vitesse et somme des forces",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Consignes du mini-TP",
+              "fichier": "/media/Variation_vitesse_forces_consignes.pdf"
+            },
+            {
+              "type": "python",
+              "titre": "Programme à compléter",
+              "fichier": "/media/Variation_vitesse_forces_a_completer.py"
+            },
+            {
+              "type": "python",
+              "titre": "Programme corrigé",
+              "fichier": "/media/Variation_vitesse_forces_corrige.py"
+            }
+          ]
         },
         {
           "code": "py",
           "titre": "Bilan énergétique d’un système en mouvement",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Consignes du mini-TP",
+              "fichier": "/media/Bilan_energetique_consignes.pdf"
+            },
+            {
+              "type": "python",
+              "titre": "Programme à compléter",
+              "fichier": "/media/Bilan_energetique_a_completer.py"
+            },
+            {
+              "type": "python",
+              "titre": "Programme corrigé",
+              "fichier": "/media/Bilan_energetique_corrige.py"
+            }
+          ]
         },
         {
           "code": "py",
-          "titre": "Signal périodique et propagation d’une onde",
-          "ressources": []
+          "titre": "Signal périodique : influence de l’amplitude et de la période",
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Consignes du mini-TP",
+              "fichier": "/media/Signal_periodique_consignes.pdf"
+            },
+            {
+              "type": "python",
+              "titre": "Programme à compléter",
+              "fichier": "/media/Signal_periodique_a_completer.py"
+            },
+            {
+              "type": "python",
+              "titre": "Programme corrigé",
+              "fichier": "/media/Signal_periodique_corrige.py"
+            }
+          ]
         }
       ]
     },
@@ -71,7 +130,23 @@
         {
           "code": "py",
           "titre": "Somme de deux signaux sinusoïdaux",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Consignes du mini-TP",
+              "fichier": "/media/Somme_deux_signaux_consignes.pdf"
+            },
+            {
+              "type": "python",
+              "titre": "Programme à compléter",
+              "fichier": "/media/Somme_deux_signaux_a_completer.py"
+            },
+            {
+              "type": "python",
+              "titre": "Programme corrigé",
+              "fichier": "/media/Somme_deux_signaux_corrige.py"
+            }
+          ]
         },
         {
           "code": "py",
