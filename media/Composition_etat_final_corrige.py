@@ -1,7 +1,6 @@
-
+# VERSION CORRIGÉE : synthèse du butanoate d'éthyle (odeur d'ananas) : acide butanoïque + éthanol → butanoate d'éthyle + eau
 # #######################################################################################################################
 # COMPOSITION ETAT FINAL D"UNE TRANSFORMATION CHIMIQUE
-# VERSION CORRIGÉE
 # Déclaration des bibliothèques #########################################################################################
 
 import matplotlib.pyplot as plt         #bibliothèque maths
@@ -9,17 +8,17 @@ import matplotlib.pyplot as plt         #bibliothèque maths
 # On considère un système comprenant deux réactifs R1 et R2 et deux produits P1 et P2
 # Déclaration des coefficients stoechiométriques 'cs' des réactifs et des produits --------------------------------------
 
-cs_R1=1         ## rentrer la valeur du coefficient stoechiométrique de R1
-cs_R2=1         ## rentrer la valeur du coefficient stoechiométrique de R2
-cs_P1=1         ## rentrer la valeur du coefficient stoechiométrique de P1
-cs_P2=1         ## rentrer la valeur du coefficient stoechiométrique de P2
+cs_R1=1           ## rentrer la valeur du coefficient stoechiométrique de R1
+cs_R2=1           ## rentrer la valeur du coefficient stoechiométrique de R2
+cs_P1=1           ## rentrer la valeur du coefficient stoechiométrique de P1
+cs_P2=1           ## rentrer la valeur du coefficient stoechiométrique de P2
 
 # Déclaration des quantités de matière 'ni' (en mol) à l'état initial des réactifs et des produits ----------------------
 
-ni_R1=1e-1        ## rentrer la valeur calculée de ni_R1
-ni_R2=1e-1        ## rentrer la valeur calculée de ni_R2
-ni_P1=0           ## rentrer la valeur de ni_P1 d'après l'énoncé
-ni_P2=0           ## rentrer la valeur de ni_P2 d'après lénoncé
+ni_R1=19.5/88.0        ## rentrer la valeur calculée de ni_R1
+ni_R2=0.79*20/46.0        ## rentrer la valeur calculée de ni_R2
+ni_P1=0             ## rentrer la valeur de ni_P1 d'après l'énoncé
+ni_P2=0             ## rentrer la valeur de ni_P2 d'après lénoncé
 
 # Calcul de l'avancement maximal et du réactif limitant -----------------------------------------------------------------
 
@@ -35,8 +34,8 @@ elif x1_max_R1>x2_max_R2:      ## compléter par <   >   ou  =   à la place des
     print("Le réactif limitant est R2 et l'avancement maximal est : x_max = ",round(x_max,3),'mol')
 
 else:
-    x_max=x1_max_R1
-    print("La réaction a lieu dans les proportions stoechiométriques")  ## compléter par la phrase adaptée à la situation
+    x_max=x1_max_R1           ## compléter par <   >   ou  =   à la place des ...
+    print("La réaction a lieu dans les proportions stoechiométriques")
     print("L'avancement maximal x_max = ",round(x_max,3),'mol')
 
 # Affichage dans la console des quantités de matière à l'état final ------------------------------------------------------

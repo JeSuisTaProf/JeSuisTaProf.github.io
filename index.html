@@ -260,7 +260,8 @@ async function viewer(x,box){
     if(!x.fichier){box.innerHTML='<p class="note">Aucun fichier n’est rattaché à cette ressource.</p>';return}
     if(x.type==='python'||e==='py'){
       const t=await fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.text()});
-      box.innerHTML=`<div class="bar"><a class="btn" href="${u}" download>Télécharger le fichier</a><button class="btn alt" data-copy>Copier le code</button></div><pre><code></code></pre>`;
+      const bz='https://console.basthon.fr/?from='+encodeURIComponent(new URL(u,location.href).href);
+      box.innerHTML=`<div class="bar"><a class="btn" href="${bz}" target="_blank" rel="noopener">▶ Ouvrir dans Basthon</a><a class="btn alt" href="${u}" download>Télécharger</a><button class="btn alt" data-copy>Copier le code</button></div><p class="note">Basthon s’ouvre dans un nouvel onglet (gratuit, sans compte) : cliquez sur « Exécuter » pour lancer le programme.</p><pre><code></code></pre>`;
       box.querySelector('code').textContent=t;box._code=t;return;
     }
     if(e==='pdf'){
