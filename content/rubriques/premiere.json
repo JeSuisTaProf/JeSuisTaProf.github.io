@@ -13,6 +13,18 @@
           "ressources": [
             {
               "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "pre-01-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "pre-01-applique"
+            },
+            {
+              "type": "qcm",
               "titre": "QCM : quantité de matière et concentration",
               "qcm": "quantite-de-matiere"
             }
@@ -21,17 +33,56 @@
         {
           "code": "2",
           "titre": "Composition chimique des solutions",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "pre-02-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "pre-02-applique"
+            }
+          ]
         },
         {
           "code": "3",
           "titre": "Évolution d’un système chimique",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "pre-03-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "pre-03-applique"
+            }
+          ]
         },
         {
           "code": "4",
           "titre": "Réactions d’oxydoréduction",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "pre-04-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "pre-04-applique"
+            }
+          ]
         },
         {
           "code": "5",
@@ -77,12 +128,38 @@
         {
           "code": "11",
           "titre": "Modélisation d’interactions fondamentales",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "pre-11-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "pre-11-applique"
+            }
+          ]
         },
         {
           "code": "12",
           "titre": "Description d’un fluide au repos",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "pre-12-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "pre-12-applique"
+            }
+          ]
         },
         {
           "code": "13",
@@ -117,7 +194,20 @@
         {
           "code": "17",
           "titre": "Images et couleurs",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "pre-17-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "pre-17-applique"
+            }
+          ]
         },
         {
           "code": "18",

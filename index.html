@@ -40,8 +40,7 @@ header{padding-top:2.2rem}
 .logo{font:700 clamp(2.2rem,7vw,3.4rem)/1.05 var(--head);letter-spacing:-.03em;margin:0;
   background:linear-gradient(transparent 72%,color-mix(in srgb,var(--acc) 28%,transparent) 72%);padding:0 .1em}
 .logo a{color:inherit;text-decoration:none}
-.ico{display:flex;gap:.7rem;color:var(--acc);opacity:.85}
-.ico svg{width:42px;height:42px}
+.ico{width:58px;height:58px;border-radius:15px;box-shadow:0 3px 10px rgba(20,24,60,.28)}
 .tag{font:600 1.5rem/1.2 var(--hand);color:var(--soft);margin:.6rem 0 0}
 nav{display:flex;gap:.6rem;margin:1.5rem 0 .4rem;flex-wrap:wrap}
 nav a{--c:var(--c-accueil);font:700 1.02rem var(--head);text-decoration:none;color:var(--c);padding:.5rem 1.1rem;border:2px solid var(--c);border-radius:999px;background:var(--panel);transition:background .15s,color .15s}
@@ -131,6 +130,8 @@ dialog::backdrop{background:rgba(20,28,43,.5)}
 .qr{display:none;margin-top:1rem;padding:1rem;border:2px dashed var(--line);text-align:center}
 .qr .qc{display:inline-block;padding:10px;background:#fff}
 footer{padding-block:3rem 2rem;color:var(--soft);font-size:.85rem}
+.pied{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem 2rem;flex-wrap:wrap}.pied p{margin:0;flex:1 1 20rem}
+.rqr{margin:0;text-align:center;font-size:.72rem;line-height:1.2}.rqr img{display:block;margin:0 auto .3rem;padding:4px;background:#fff;border-radius:6px;border:1px solid var(--line)}
 .err{margin:2rem 0;padding:1rem 1.2rem;border-left:5px solid var(--c-orange);background:var(--panel)}
 .wide .view iframe{height:calc(96vh - 200px)}
 .wide .view pre{max-height:calc(96vh - 200px)}
@@ -141,17 +142,14 @@ footer{padding-block:3rem 2rem;color:var(--soft);font-size:.85rem}
 <header>
   <div class="top">
     <h1 class="logo"><a href="#accueil">JeSuisTaProf</a></h1>
-    <div class="ico" aria-hidden="true">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="3" fill="currentColor"/><ellipse cx="24" cy="24" rx="20" ry="8"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(120 24 24)"/></svg>
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6h12M20 6v12L8 39a3 3 0 0 0 2.6 4.5h26.8A3 3 0 0 0 40 39L28 18V6"/><path d="M13.5 31h21"/><circle cx="21" cy="37" r="1.3" fill="currentColor"/><circle cx="27" cy="35" r="1" fill="currentColor"/></svg>
-    </div>
+    <img class="ico" src="icons/icon.svg" alt="" width="58" height="58">
   </div>
   <p class="tag" id="tag">Physique-chimie au lycée</p>
   <nav aria-label="Rubriques" id="nav"></nav>
 </header>
 <main id="main"><p class="intro">Chargement…</p></main>
 <noscript><main><p>JeSuisTaProf regroupe des ressources de physique-chimie (QCM corrigés, fiches méthodes, programmes Python) pour les classes de Première et Terminale spécialité, organisées selon les programmes officiels. Ce site nécessite JavaScript.</p></main></noscript>
-<footer id="foot"></footer>
+<footer><div class="pied"><p id="foot"></p><figure class="rqr"><img src="icons/qr.svg" alt="QR code menant à jesuistaprof.github.io" width="76" height="76"><figcaption>Flashez pour revenir ici</figcaption></figure></div></footer>
 <p class="printmsg">Les QCM de JeSuisTaProf se font en ligne : ils ne peuvent pas être imprimés. Rendez-vous sur jesuistaprof.github.io.</p>
 <dialog id="dlg" aria-labelledby="dt"></dialog>
 
