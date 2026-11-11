@@ -271,6 +271,7 @@ async function init(){
 
 /* ---------- pages ---------- */
 function page(k){
+  if(S.cur!==k)stat('page/'+k);
   S.cur=k;
   for(const a of document.querySelectorAll('#nav a')){if(a.dataset.k===k)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}
   const r=S.rub[k];
@@ -309,6 +310,7 @@ function openPostit(k,sl){
   if(dlg.classList.contains('full')){dlg._keep=(dlg._keep||0)+1;dlg.close();dlg.classList.remove('full');dlg._id=null;exitFull();document.body.classList.remove('qcm-on')}
   const f=findPostit(k,sl);if(!f){location.hash=k;return}
   const {s,p,r}=f,col=PAL[r.couleur]||PAL.bleu,res=p.ressources||[];
+  if(dlg._pi!==k+'/'+sl){dlg._pi=k+'/'+sl;stat('postit/'+k+'/'+sl)}
   dlg.classList.remove('wide');
   dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${p.code?esc(p.code)+') ':''}${fm(p.titre)}</h2><p>${fm(s.theme)}${s.partie?' · '+fm(s.partie):''}</p></div><button class="x" aria-label="Fermer" data-close>×</button></div><div class="db" id="body"></div>`;
   const list=()=>{
@@ -320,6 +322,7 @@ function openPostit(k,sl){
   const show=i=>{
     const x=res[i],b=$('#body');
     if(x.type==='qcm'){location.hash='qcm-'+x.qcm;return}
+    stat('ressource/'+resName(x));
     if(x.type==='lien'&&!x.integrer){window.open(httpUrl(x.url),'_blank','noopener');return}
     dlg.classList.add('wide');
     b.innerHTML=`<div class="bar">${res.length>1?`<button class="btn alt" data-back>← Retour</button>`:''}<strong>${fm(x.titre)}</strong></div><div class="view" id="view"><p class="note">Chargement…</p></div>`;
@@ -329,6 +332,8 @@ function openPostit(k,sl){
   list();
   if(!dlg.open)dlg.showModal();
 }
+/* nom lisible d'une ressource pour les statistiques anonymes : type/fichier (ou site pour un lien) */
+function resName(x){let n='';try{n=x.fichier?String(x.fichier).split('/').pop():new URL(httpUrl(x.url)).hostname}catch(e){n='?'}return (x.type||'fichier')+'/'+n}
 async function viewer(x,box){
   try{
     if(x.type==='lien'){
@@ -341,7 +346,11 @@ async function viewer(x,box){
       const t=await fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.text()});
       const bz='https://console.basthon.fr/?from='+encodeURIComponent(new URL(u,location.href).href);
       box.innerHTML=`<div class="bar"><a class="btn" href="${bz}" target="_blank" rel="noopener">▶ Ouvrir dans Basthon</a><a class="btn alt" href="${u}" download>Télécharger</a><button class="btn alt" data-copy>Copier le code</button></div><p class="note">Basthon s’ouvre dans un nouvel onglet (gratuit, sans compte) : cliquer sur « Exécuter » pour lancer le programme.</p><pre><code></code></pre>`;
-      box.querySelector('code').textContent=t;box._code=t;return;
+      box.querySelector('code').textContent=t;box._code=t;
+      const nm='python/'+String(x.fichier).split('/').pop();
+      box.querySelector('a[href^="https://console.basthon"]').addEventListener('click',()=>stat(nm+'/basthon'));
+      box.querySelector('a[download]').addEventListener('click',()=>stat(nm+'/telecharge'));
+      box._stat=nm;return;
     }
     if(e==='pdf'){
       box.innerHTML=`<div class="bar"><a class="btn alt" href="${u}" target="_blank" rel="noopener">Ouvrir dans un onglet</a><span class="zm" role="group" aria-label="Zoom"><button class="btn alt" data-zoom="-" aria-label="Réduire">−</button><output id="zv">100 %</output><button class="btn alt" data-zoom="+" aria-label="Agrandir">+</button><button class="btn alt" data-zoom="0">Ajuster</button></span></div><div class="pdfbox"></div>`;
@@ -426,7 +435,7 @@ function openStats(){
   }else b=stBoard(o);
   dlg.innerHTML=head+`<div class="db">${b}</div>`;
   const f=$('#sf');if(f)f.onsubmit=e=>{e.preventDefault();const v=$('#ps').value.trim().replace(/\s+/g,' ');if(!v)return;
-    if(stSet({v:1,pseudo:v,depuis:Date.now(),res:[]}))openStats();else $('#sfm').textContent='Enregistrement bloqué par le navigateur (navigation privée ?) : statistiques impossibles ici.'};
+    if(stSet({v:1,pseudo:v,depuis:Date.now(),res:[]})){stat('statistiques/activees');openStats()}else $('#sfm').textContent='Enregistrement bloqué par le navigateur (navigation privée ?) : statistiques impossibles ici.'};
   const del=$('#sdel');if(del)del.onclick=()=>{if(del.dataset.ok){stSet(null);openStats();return}del.dataset.ok=1;del.textContent='Confirmer : tout effacer';$('#sdelm').textContent='Résultats et pseudo supprimés de cet appareil, définitivement.'};
   if(!dlg.open)dlg.showModal();
 }
@@ -543,6 +552,8 @@ async function openQcm(id){
       const m=obj?(pc>=obj?`Objectif atteint (${obj} %) : chapitre maîtrisé.`:`Objectif : ${obj} %. Relire les corrections puis recommencer.`):(sc===n?'Parfait : chapitre maîtrisé.':sc>=n*.6?'Bien joué : relire les corrections des erreurs.':'Revoir la fiche du chapitre puis recommencer.');
       h=`<strong>${pc} %</strong><p>${m}</p><p class="det">${sc} bonne${sc>1?'s':''} réponse${sc>1?'s':''} sur ${n}.</p>`;
     }
+    /* statistique anonyme pour la professeure : tranche de score par QCM */
+    {const v=conc?Math.round(100*(sc-nf)/n):pc;stat('qcm/'+id+'/score/'+(v>=80?'80-100':v>=50?'50-79':'0-49'))}
     const so=stGet();
     if(so){const ok=stAdd({id,d:Date.now(),t:plain(q.titre),niv:+q.niveau||0,n,sc,pc,...(conc?{c:1,pts:sc-nf}:{}),...(obj?{obj}:{})});
       h+=ok?`<p class="sst">✔ Résultat enregistré dans les statistiques (${esc(so.pseudo)}). <button type="button" class="btn alt" data-stats>Voir les statistiques</button></p>`:`<p class="sst">Résultat non enregistré sur cet appareil.</p>`}
@@ -580,7 +591,7 @@ document.addEventListener('click',e=>{
   else if('back' in t.dataset)dlg._list();
   else if('zoom' in t.dataset){if(dlg._z)dlg._z(t.dataset.zoom==='0'?0:t.dataset.zoom==='+'?.25:-.25)}
   else if(t.dataset.qr)qr(t.dataset.qr,slug(t.dataset.qr));
-  else if('copy' in t.dataset){const b=$('#view');navigator.clipboard&&navigator.clipboard.writeText(b._code||'').then(()=>{t.textContent='Copié'})}
+  else if('copy' in t.dataset){const b=$('#view');if(b._stat)stat(b._stat+'/copie');navigator.clipboard&&navigator.clipboard.writeText(b._code||'').then(()=>{t.textContent='Copié'})}
   else if(dlg.classList.contains('full'))askQuit();
   else dlg.close();
 });
