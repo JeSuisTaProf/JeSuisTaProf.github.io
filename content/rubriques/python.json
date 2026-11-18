@@ -88,7 +88,23 @@
         {
           "code": "py",
           "titre": "Lois de Kepler et données astronomiques",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Fiche TP : l’orbite de Mars",
+              "fichier": "/media/Kepler_troisieme_loi_consignes.pdf"
+            },
+            {
+              "type": "python",
+              "titre": "Programme à compléter",
+              "fichier": "/media/Kepler_troisieme_loi_a_completer.py"
+            },
+            {
+              "type": "python",
+              "titre": "Programme corrigé",
+              "fichier": "/media/Kepler_troisieme_loi_corrige.py"
+            }
+          ]
         },
         {
           "code": "py",
