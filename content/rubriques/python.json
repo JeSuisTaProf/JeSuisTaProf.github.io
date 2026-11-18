@@ -62,7 +62,23 @@
         {
           "code": "py",
           "titre": "Diagramme de distribution d’un couple acide-base",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "fiche",
+              "titre": "Fiche TP : l’acide éthanoïque",
+              "fichier": "/media/Diagramme_distribution_consignes.pdf"
+            },
+            {
+              "type": "python",
+              "titre": "Programme à compléter",
+              "fichier": "/media/Diagramme_distribution_a_completer.py"
+            },
+            {
+              "type": "python",
+              "titre": "Programme corrigé",
+              "fichier": "/media/Diagramme_distribution_corrige.py"
+            }
+          ]
         },
         {
           "code": "py",
