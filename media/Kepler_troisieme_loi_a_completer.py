@@ -39,7 +39,7 @@ aMars = ...                      ## compléter : demi-grand axe de Mars en m (T�
 print("Demi-grand axe de Mars =", "{:.3e}".format(aMars), "m, soit", round(aMars/au, 2), "au")
 
 # Graphique T² = f(a³) --------------------------------------------------------------------------------------------------
-
+plt.figure(figsize=(10, 6))      ## nouveau graphique à chaque exécution (évite une légende en double)
 plt.plot(acube, Tcarre, "b+", markersize=12, label="planètes (sauf Mars)")
 plt.plot(acube, modele(acube, k), "r-", label="modèle linéaire T² = k × a³")
 plt.plot(aMars**3, TMars**2, "go", label="Mars")

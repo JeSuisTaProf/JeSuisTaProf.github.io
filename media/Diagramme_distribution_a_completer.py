@@ -22,7 +22,7 @@ P_AH=...                ## compléter la formule permettant de calculer le pourc
 P_A=...                 ## compléter la formule permettant de calculer le pourcentage de la forme basique A-
 
 # Créer le graphique qui permettra d'observer les 2 pourcentages ---------------------------------------------------------
-
+plt.figure(figsize=(10, 6))             ## nouveau graphique à chaque exécution (évite une légende en double)
 plt.plot(pH,P_AH,"r",label='% de AH')          #Donne l'étiquette sur les axes (couleur/trait plein/pointillés ...)
 plt.plot(pH,P_A,"b--",label='% de A-')
 

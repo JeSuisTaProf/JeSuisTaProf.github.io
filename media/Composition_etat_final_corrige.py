@@ -56,7 +56,7 @@ n_P1=[(ni_P1+cs_P1*valeur)for valeur in x]
 n_P2=[(ni_P2+cs_P2*valeur)for valeur in x]
 
 # Créer le graphique qui permettra d'observer les 4 quantités de matières ------------------------------------------------
-
+plt.figure(figsize=(10, 6))       ## nouveau graphique à chaque exécution (évite une légende en double)
 plt.plot(x,n_R1,"b",label='Réactif R1')          #Donne l'étiquette sur les axes (couleur/trait plein/pointillés ...)
 plt.plot(x,n_R2,"g--",label='Réactif R2')
 plt.plot(x,n_P1,"r-.",label='P1')
