@@ -28,6 +28,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-01-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-01-fil"
             }
           ]
         },
@@ -52,6 +58,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-02-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-02-fil"
             }
           ]
         },
@@ -97,6 +109,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-06-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-06-fil"
             }
           ]
         },
@@ -121,6 +139,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-07-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-07-fil"
             }
           ]
         },
@@ -165,6 +189,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-11-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-11-fil"
             }
           ]
         },
@@ -189,6 +219,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-12-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-12-fil"
             }
           ]
         },
@@ -213,6 +249,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-13-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-13-fil"
             }
           ]
         },
@@ -237,6 +279,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-14-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-14-fil"
             }
           ]
         }
@@ -281,6 +329,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-17-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-17-fil"
             }
           ]
         },
@@ -305,6 +359,12 @@
               "titre": "Comme en contrôle",
               "niveau": 3,
               "qcm": "tle-18-controle"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "tle-18-fil"
             }
           ]
         },
