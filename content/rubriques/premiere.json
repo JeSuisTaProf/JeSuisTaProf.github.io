@@ -22,6 +22,12 @@
               "titre": "J’applique",
               "niveau": 2,
               "qcm": "pre-01-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "pre-01-fil"
             }
           ]
         },
@@ -40,6 +46,12 @@
               "titre": "J’applique",
               "niveau": 2,
               "qcm": "pre-02-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "pre-02-fil"
             }
           ]
         },
@@ -58,6 +70,12 @@
               "titre": "J’applique",
               "niveau": 2,
               "qcm": "pre-03-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "pre-03-fil"
             }
           ]
         },
@@ -76,6 +94,12 @@
               "titre": "J’applique",
               "niveau": 2,
               "qcm": "pre-04-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "pre-04-fil"
             }
           ]
         },
@@ -135,6 +159,12 @@
               "titre": "J’applique",
               "niveau": 2,
               "qcm": "pre-11-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "pre-11-fil"
             }
           ]
         },
@@ -153,6 +183,12 @@
               "titre": "J’applique",
               "niveau": 2,
               "qcm": "pre-12-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "pre-12-fil"
             }
           ]
         },
@@ -201,6 +237,12 @@
               "titre": "J’applique",
               "niveau": 2,
               "qcm": "pre-17-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "pre-17-fil"
             }
           ]
         },

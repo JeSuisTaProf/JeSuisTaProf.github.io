@@ -127,6 +127,7 @@ collections:
                           - { label: "Niveau 1 ★ (les fondamentaux)", value: 1 }
                           - { label: "Niveau 2 ★★ (j’applique)", value: 2 }
                           - { label: "Niveau 3 ★★★ (comme en contrôle)", value: 3 }
+                      - { label: "Badge « Méthode » (le fil du chapitre)", name: methode, widget: boolean, default: false, required: false }
                       - label: QCM à ouvrir
                         name: qcm
                         widget: relation
@@ -183,6 +184,7 @@ collections:
           - { label: "Niveau 1 ★ (les fondamentaux)", value: 1 }
           - { label: "Niveau 2 ★★ (j’applique)", value: 2 }
           - { label: "Niveau 3 ★★★ (comme en contrôle)", value: 3 }
+      - { label: "Badge « Méthode » (le fil du chapitre)", name: methode, widget: boolean, default: false, required: false }
       - { label: "Contenu protégé (QCM préparés avec Claude : ne pas modifier ici)", name: q64, widget: hidden }
       - label: Questions
         name: questions
