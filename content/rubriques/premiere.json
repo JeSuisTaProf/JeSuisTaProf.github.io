@@ -220,7 +220,26 @@
         {
           "code": "16",
           "titre": "Ondes mécaniques",
-          "ressources": []
+          "ressources": [
+            {
+              "type": "qcm",
+              "titre": "Les fondamentaux",
+              "niveau": 1,
+              "qcm": "pre-16-fondamentaux"
+            },
+            {
+              "type": "qcm",
+              "titre": "J’applique",
+              "niveau": 2,
+              "qcm": "pre-16-applique"
+            },
+            {
+              "type": "qcm",
+              "titre": "Le fil du chapitre",
+              "methode": true,
+              "qcm": "pre-16-fil"
+            }
+          ]
         },
         {
           "code": "17",
