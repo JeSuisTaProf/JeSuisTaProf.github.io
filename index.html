@@ -120,6 +120,7 @@ body.qcm-on{overflow:hidden}
 .sfoot .btn{margin:0}
 .sfoot small{color:var(--soft);flex:1 1 100%}
 .lnk{font:inherit;background:none;border:0;padding:0;color:var(--acc);text-decoration:underline;cursor:pointer}
+.srv{font-size:.88rem;margin-top:.15rem}
 .sbt{font:700 1.1rem var(--head);margin:1.2rem 0 .2rem}
 .smore summary{cursor:pointer;color:var(--soft);font-size:.9rem;margin:.3rem 0 0}
 .srd{border-top:1px solid var(--line);padding:.2rem 0}
@@ -417,7 +418,7 @@ function visites(){
 const SK='jstp-stats';
 function stGet(){try{const o=JSON.parse(localStorage.getItem(SK)||'null');return o&&o.pseudo?o:null}catch(e){return null}}
 function stSet(o){try{if(o)localStorage.setItem(SK,JSON.stringify(o));else localStorage.removeItem(SK);return true}catch(e){return false}}
-function stAdd(r){const o=stGet();if(!o)return false;o.res=(o.res||[]).concat(r).slice(-3000);return stSet(o)}
+function stAdd(r){const o=stGet();if(!o)return false;if(r.rv)(o.res||[]).forEach(x=>{if(x.id===r.id)delete x.rv});o.res=(o.res||[]).concat(r).slice(-3000);return stSet(o)}
 /* QCM -> rubrique et post-it, d'après content/rubriques */
 function qcmIndex(){const I={};S.order.forEach(k=>{const r=S.rub[k];(r.sections||[]).forEach(s=>(s.postits||[]).forEach(p=>(p.ressources||[]).forEach(x=>{if(x.type==='qcm'&&x.qcm&&!I[x.qcm])I[x.qcm]={k,p,niv:+x.niveau||0,t:x.titre}})))});return I}
 function unfull(){if(!dlg.classList.contains('full'))return;if(dlg.open){dlg._keep=(dlg._keep||0)+1;dlg.close()}dlg.classList.remove('full');dlg._id=null;exitFull();document.body.classList.remove('qcm-on')}
@@ -461,7 +462,7 @@ function stBoard(o){
   /* bilan par chapitre : une rubrique repliable, un chapitre = une barre (moyenne des derniers scores de ses QCM), à toucher pour le détail */
   const groups=[];S.order.forEach(k=>{const r=S.rub[k],chs=[];(r.sections||[]).forEach(s=>(s.postits||[]).forEach(p=>{const qs=Q.filter(q=>q.x.p===p);if(qs.length)chs.push({p,qs:qs.sort((a,b)=>a.niv-b.niv),v:Math.round(qs.reduce((t,q)=>t+Math.max(0,pct(q.last)),0)/qs.length)})}));if(chs.length)groups.push({k,r,chs})});
   const autres=Q.filter(q=>!q.x.p),lastK=(I[R[R.length-1].id]||{}).k;
-  const row=q=>`<div class="srow"><div>${q.niv&&NIV[q.niv]?nivBadge(q.niv):''}${esc(plain(q.titre))}<br><small class="note">${q.a.length} essai${q.a.length>1?'s':''} · dernier le ${fdate(q.last.d)}</small></div>
+  const row=q=>`<div class="srow"><div>${q.niv&&NIV[q.niv]?nivBadge(q.niv):''}${esc(plain(q.titre))}<br><small class="note">${q.a.length} essai${q.a.length>1?'s':''} · dernier le ${fdate(q.last.d)}</small>${q.last.rv?`<br><button type="button" class="lnk srv" data-rev="${esc(q.id)}">Revoir la correction</button>`:''}</div>
     <div class="spark" aria-hidden="true">${q.a.slice(-10).map(r=>`<i class="${pct(r)>=q.seuil?'ok':''}" style="height:${Math.max(4,Math.min(100,pct(r)))}%"></i>`).join('')}</div>
     <div class="sv"><b>${shown(q.last)}</b><small>meilleur : ${shown(q.best)}</small></div></div>`;
   h+=`<h3 class="sbt">Bilan par chapitre</h3><p class="note">Ouvrir un chapitre pour le détail. Pointillés : 70 %.</p>`;
@@ -470,6 +471,24 @@ function stBoard(o){
       return `<details class="scd"><summary class="sbar"><span class="l" title="${esc(plain(c.p.titre))}">${/^\d+$/.test(code)?'Ch. '+esc(code):fm(c.p.titre)}</span><span class="t"><i style="width:${c.v}%"></i><s></s></span><b>${c.v}&nbsp;%</b></summary><div class="sch"><h4>${code?esc(code)+') ':''}${fm(c.p.titre)}</h4>${c.qs.map(row).join('')}</div></details>`}).join('')}</details>`});
   if(autres.length)h+=`<details class="srd"><summary>Autres QCM <small>${autres.length}</small></summary><div class="sch">${autres.map(row).join('')}</div></details>`;
   return h+stFoot();
+}
+/* revue du dernier essai : questions tirées, réponses données, correction des seules questions tentées */
+async function openReview(id){
+  const o=stGet(),a=o&&(o.res||[]).filter(r=>r.id===id),r=a&&a[a.length-1];if(!r||!r.rv)return openStats();
+  let q;try{q=unveil(await J('content/qcm/'+id+'.json'))}catch(e){q=null}
+  const fb=s=>fm(s).replace(/\n/g,'<br>'),A=q?qPrep(q):[],ok=q&&qHash(q.questions)===r.rv.h;
+  let b='';
+  if(!ok)b=`<p>QCM modifié depuis cet essai : correction indisponible. Refaire le QCM pour obtenir une nouvelle correction.</p>`;
+  else{let ex=0;const L=r.rv.a;
+    for(let k=0;k<L.length;k+=2){const x=A[L[k]],v=L[k+1];if(!x)continue;const i=k/2,an=(+x.bonne||1)-1,e=(x.enonce||'').trim();
+      b+=(e?`<div class="enonce"><h3>Exercice ${++ex}</h3>${fb(e)}${x.figure?`<img src="${fileUrl(x.figure)}" alt="Figure de l’exercice ${ex}" loading="lazy">`:''}</div>`:'')+
+      `<fieldset class="q${x.defi?' defi':''}${x.vf?' vf':''}"><legend>${i+1}. ${x.defi?'<span class="defi-t">Défi</span> ':''}${x.vf?'<em>Vrai ou faux ?</em> ':''}${fb(x.question)}</legend><div class="opts">${(x.choix||[]).map((c,j)=>
+      `<label class="${v>=0&&j===an?'good':v>=0&&j===v?'bad':''}"><input type="radio" disabled${j===v?' checked':''}><span>${fm(c)}</span></label>`).join('')}</div>`+
+      `<p class="exp">${v<0?'<strong>Pas de réponse.</strong>':`<strong>${v===an?'Correct.':'Incorrect.'}</strong>${x.vf?` L’affirmation est <strong>${x.vrai?'vraie':'fausse'}</strong>.`:''} ${fb(x.explication||'')}`}</p></fieldset>`}}
+  dlg.classList.remove('wide');
+  dlg.innerHTML=`<div class="dh"><div><h2 id="dt">${q&&q.methode?MET+'<br>':q&&NIV[q.niveau]?nivBadge(q.niveau)+'<br>':''}${fm((q&&q.titre)||r.t||id)}</h2><p>Correction de l’essai du ${fdate(r.d)} · ${shown(r)}</p></div><button class="x" aria-label="Fermer" data-close>×</button></div>
+  <div class="db"><p><button type="button" class="btn alt" data-stbk>← Mes statistiques</button></p>${b}<p><button type="button" class="btn alt" data-stbk>← Mes statistiques</button> <button type="button" class="btn" data-open="qcm-${esc(id)}">Refaire le QCM</button></p></div>`;
+  if(!dlg.open)dlg.showModal();dlg.querySelector('.db').scrollTop=0;
 }
 function stFoot(){return `<div class="sfoot"><button type="button" class="btn" data-save>Sauvegarder</button><button type="button" class="btn alt" data-restore>Restaurer</button><button type="button" class="btn alt" id="sdel">Effacer</button><small id="sdelm"></small></div>`}
 /* sauvegarde dans un fichier (Téléchargements) et restauration depuis ce fichier */
@@ -485,6 +504,9 @@ function stRestore(){const i=document.createElement('input');i.type='file';i.acc
 const NIV={1:['★','Cours et TP, sans calcul · objectif 90 %'],2:['★★','Calculs courts'],3:['★★★','Énoncés type contrôle · barème +1 / −1']};
 const MET=`<span class="niv nm"><svg viewBox="0 0 16 16" width="1.05em" height="1.05em" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-.15em"><circle cx="4.6" cy="8" r="3"/><path d="M7.6 8h7M12 8v2.8M14.6 8v2"/></svg> Méthode</span>`;const nivBadge=n=>`<span class="niv n${n}">Niveau ${n} ${NIV[n][0]}</span>`;
 /* questions protégées : champ q64 = base64(octets UTF-8 du JSON XOR clé) */
+const qHash=a=>{const t=JSON.stringify(a||[]);let h=5381;for(let i=0;i<t.length;i++)h=(h*33^t.charCodeAt(i))>>>0;return h.toString(36)};
+/* questions telles que le QCM les affiche (vrai/faux = deux propositions) */
+const qPrep=q=>(q.questions||[]).map((x,i)=>(x.format==='vraifaux'||x.type==='vraifaux')?{...x,_i:i,vf:1,choix:['Vrai','Faux'],bonne:x.vrai?1:2}:{...x,_i:i});
 const unveil=q=>{if(!q.q64)return q;const k=new TextEncoder().encode('JeSuisTaProf'),b=Uint8Array.from(atob(q.q64),c=>c.charCodeAt(0)).map((v,i)=>v^k[i%k.length]);return {...q,questions:JSON.parse(new TextDecoder().decode(b))}};
 const stat=path=>{try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path,title:path,event:true})}catch(e){}};
 const fsEl=()=>document.fullscreenElement||document.webkitFullscreenElement;
@@ -497,7 +519,7 @@ async function openQcm(id){
   let q;try{q=unveil(await J('content/qcm/'+id+'.json'))}catch(e){location.hash=S.cur||'accueil';return}
   document.body.classList.add('qcm-on');stat('qcm/'+id+'/ouvert');
   dlg._id=id;dlg._dirty=false;
-  const ALL=(q.questions||[]).map(x=>(x.format==='vraifaux'||x.type==='vraifaux')?{...x,vf:1,choix:['Vrai','Faux'],bonne:x.vrai?1:2}:{...x});
+  const ALL=qPrep(q),hq=qHash(q.questions);
   const mix=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
   /* blocs : une question isolée, ou un exercice (énoncé + questions qui suivent jusqu'au prochain énoncé) */
   const B=[];let cur=null;
@@ -520,7 +542,7 @@ async function openQcm(id){
     sel=[...mix(pick.filter(b=>!b.ex&&!b.q[0].defi)),...pick.filter(b=>b.ex),...pick.filter(b=>!b.ex&&b.q[0].defi)];
   }
   const Q=sel.flatMap(b=>b.q);
-  if(q.melanger)Q.forEach(x=>{if(x.vf||!Array.isArray(x.choix))return;const ord=mix(x.choix.map((_,j)=>j));const b=(+x.bonne||1)-1;x.choix=ord.map(j=>x.choix[j]);x.bonne=ord.indexOf(b)+1});
+  if(q.melanger)Q.forEach(x=>{if(x.vf||!Array.isArray(x.choix))return;const ord=mix(x.choix.map((_,j)=>j));const b=(+x.bonne||1)-1;x.choix=ord.map(j=>x.choix[j]);x.bonne=ord.indexOf(b)+1;x._ord=ord});
   const fb=s=>fm(s).replace(/\n/g,'<br>');
   let ex=0;
   const blocs=Q.map((x,i)=>{
@@ -534,15 +556,17 @@ async function openQcm(id){
    <button type="button" class="btn alt" id="again" style="display:none">Recommencer</button>
 </form></div>`;
   $('#val').onclick=()=>{
-    let sc=0,nf=0,nv=0;
+    let sc=0,nf=0,nv=0;const rv=[];
     document.querySelectorAll('.clr').forEach(b=>b.remove());
     Q.forEach((x,i)=>{
       const fs=document.querySelectorAll('.q')[i],labs=fs.querySelectorAll('label'),ch=fs.querySelector('input:checked'),v=ch?+ch.value:-1,a=(+x.bonne||1)-1;
       if(v===a)sc++;else if(v<0)nv++;else nf++;
-      labs.forEach((l,j)=>{if(j===a)l.classList.add('good');else if(j===v)l.classList.add('bad')});
+      rv.push(x._i,v<0?-1:x._ord?x._ord[v]:v);
+      /* sans réponse : ni bonne réponse ni explication (seules les questions tentées sont corrigées) */
+      if(v>=0)labs.forEach((l,j)=>{if(j===a)l.classList.add('good');else if(j===v)l.classList.add('bad')});
       fs.querySelectorAll('input').forEach(e=>e.disabled=true);
       const p=document.createElement('p');p.className='exp';
-      p.innerHTML=`<strong>${v===a?'Correct.':v<0?'Pas de réponse.':'Incorrect.'}</strong>${x.vf?` L’affirmation est <strong>${x.vrai?'vraie':'fausse'}</strong>.`:''} ${fb(x.explication||'')}`;fs.append(p);
+      p.innerHTML=v<0?'<strong>Pas de réponse.</strong>':`<strong>${v===a?'Correct.':'Incorrect.'}</strong>${x.vf?` L’affirmation est <strong>${x.vrai?'vraie':'fausse'}</strong>.`:''} ${fb(x.explication||'')}`;fs.append(p);
     });
     const n=Q.length,pc=Math.round(100*sc/n),el=$('#score');let h;
     if(conc){
@@ -555,8 +579,8 @@ async function openQcm(id){
     /* statistique anonyme pour la professeure : tranche de score par QCM */
     {const v=conc?Math.round(100*(sc-nf)/n):pc;stat('qcm/'+id+'/score/'+(v>=80?'80-100':v>=50?'50-79':'0-49'))}
     const so=stGet();
-    if(so){const ok=stAdd({id,d:Date.now(),t:plain(q.titre),niv:+q.niveau||0,n,sc,pc,...(conc?{c:1,pts:sc-nf}:{}),...(obj?{obj}:{})});
-      h+=ok?`<p class="sst">✔ Résultat enregistré dans les statistiques (${esc(so.pseudo)}). <button type="button" class="btn alt" data-stats>Voir les statistiques</button></p>`:`<p class="sst">Résultat non enregistré sur cet appareil.</p>`}
+    if(so){const ok=stAdd({id,d:Date.now(),t:plain(q.titre),niv:+q.niveau||0,n,sc,pc,...(conc?{c:1,pts:sc-nf}:{}),...(obj?{obj}:{}),rv:{h:hq,a:rv}});
+      h+=ok?`<p class="sst">✔ Résultat et correction enregistrés dans les statistiques (${esc(so.pseudo)}). <button type="button" class="btn alt" data-stats>Voir les statistiques</button></p>`:`<p class="sst">Résultat non enregistré sur cet appareil.</p>`}
     else h+=`<p class="sst">Suivre sa progression ? <button type="button" class="btn alt" data-stats>Activer les statistiques</button></p>`;
     el.style.display='block';el.innerHTML=h;el.focus();stat('qcm/'+id+'/termine');dlg._dirty=false;
     $('#val').style.display='none';$('#again').style.display='inline-block';
@@ -585,6 +609,8 @@ document.addEventListener('click',e=>{
   if(e.target.closest('[data-stats]')){location.hash='stats';return}
   if(e.target.closest('[data-save]')){stSave();return}
   if(e.target.closest('[data-restore]')){stRestore();return}
+  {const rv=e.target.closest('[data-rev]');if(rv){openReview(rv.dataset.rev);return}}
+  if(e.target.closest('[data-stbk]')){openStats();return}
   const t=e.target.closest('[data-open],[data-res],[data-back],[data-close],[data-qr],[data-copy],[data-zoom]');if(!t)return;
   if(t.dataset.open)location.hash=t.dataset.open;
   else if('res' in t.dataset)dlg._show(+t.dataset.res);
