@@ -25,6 +25,11 @@
               "type": "python",
               "titre": "Programme corrigé",
               "fichier": "/media/Composition_etat_final_corrige.py"
+            },
+            {
+              "type": "fiche",
+              "titre": "Fiche corrigée",
+              "fichier": "/media/Composition_etat_final_corrige.pdf"
             }
           ]
         },
@@ -77,6 +82,11 @@
               "type": "python",
               "titre": "Programme corrigé",
               "fichier": "/media/Diagramme_distribution_corrige.py"
+            },
+            {
+              "type": "fiche",
+              "titre": "Fiche corrigée",
+              "fichier": "/media/Diagramme_distribution_corrige.pdf"
             }
           ]
         },
@@ -103,6 +113,11 @@
               "type": "python",
               "titre": "Programme corrigé",
               "fichier": "/media/Kepler_troisieme_loi_corrige.py"
+            },
+            {
+              "type": "fiche",
+              "titre": "Fiche corrigée",
+              "fichier": "/media/Kepler_troisieme_loi_corrige.pdf"
             }
           ]
         },
@@ -124,6 +139,11 @@
               "type": "python",
               "titre": "Programme corrigé",
               "fichier": "/media/Interferences_somme_corrige.py"
+            },
+            {
+              "type": "fiche",
+              "titre": "Fiche corrigée",
+              "fichier": "/media/Interferences_somme_corrige.pdf"
             }
           ]
         }
